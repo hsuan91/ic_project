@@ -13,7 +13,7 @@ module testbench;
     clk = 0;
     rst = 1;
     #40 rst = 0;
-    #200000 $stop;
+    #20000 $stop;
   end
   
   always #10 clk = ~clk;
