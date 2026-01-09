@@ -72,6 +72,26 @@ module DE0_CV(
 //=======================================================
 //  REG/WIRE declarations
 //=======================================================
+//`define USE_CLOCK_DIVIDER
+	logic [31:0] regs_31;
+	logic clk;
+	logic clk_div;
+
+
+
+	`ifdef USE_CLOCK_DIVIDER
+		clock_divider u_clock_devider(
+			.clk      (CLOCK_50),
+			.rst      (~RESET_N),
+			.DIVISOR  (1_000_000),
+			//
+			.clk_out  (clk_div   ),
+		);
+		
+		assign clk = clk_div;
+	`else
+		assign clk = CLOCK_50;
+	`endif
 
 
 
