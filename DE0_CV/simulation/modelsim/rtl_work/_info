@@ -7,68 +7,173 @@ z2
 !i10e 25
 !i10f 100
 cModel Technology
-Z0 dC:/Users/LAB601/Downloads/DE0_CV/simulation/modelsim
-vadder_4bit
+Z0 dC:/Users/user/Desktop/ic_project/DE0_CV/simulation/modelsim
+vDE0_CV
 Z1 DXx6 sv_std 3 std 0 22 AD7iAPLo6nTIKk<N0eo=D3
-Z2 !s110 1694148976
+Z2 !s110 1767972323
 !i10b 1
-!s100 HFKgC;ik<lf^?n8YiP4nJ3
-IeWHe?81nO3S];9BCi;:;11
+!s100 AYSgFb;^maJWHVOKgVgi?2
+IYSKZRJQaDTR_jVc8zO7<N0
 Z3 VDg1SIo80bB@j0V0VzS_@n1
-!s105 adder_4bit_sv_unit
+!s105 DE0_CV_sv_unit
 S1
 R0
-w1694148767
-8../../design/adder_4bit.sv
-F../../design/adder_4bit.sv
-L0 1
+w1767971038
+8../../design/DE0_CV.sv
+F../../design/DE0_CV.sv
+L0 6
 Z4 OV;L;10.5b;63
 r1
 !s85 0
 31
-Z5 !s108 1694148976.000000
-!s107 ../../design/adder_4bit.sv|
-!s90 -reportprogress|300|../../design/adder_4bit.sv|
+Z5 !s108 1767972323.000000
+!s107 ../../design/DE0_CV.sv|
+!s90 -reportprogress|300|../../design/DE0_CV.sv|
 !i113 1
 Z6 tCvgOpt 0
-vDE0_CV
+n@d@e0_@c@v
+vLSU
+R1
+Z7 !s110 1767972294
+!i10b 1
+!s100 h@RbCLhdK_[@W05E]17DE2
+I?D;maz:M]3HgVUORbL^ck1
+R3
+Z8 !s105 LSU_sv_unit
+S1
+R0
+Z9 w1767971878
+Z10 8C:/Users/user/Desktop/ic_project/DE0_CV/design/LSU.sv
+Z11 FC:/Users/user/Desktop/ic_project/DE0_CV/design/LSU.sv
+L0 3
+R4
+r1
+!s85 0
+31
+Z12 !s108 1767972294.000000
+Z13 !s107 C:/Users/user/Desktop/ic_project/DE0_CV/design/defines.sv|C:/Users/user/Desktop/ic_project/DE0_CV/design/LSU.sv|
+Z14 !s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/user/Desktop/ic_project/DE0_CV/design|C:/Users/user/Desktop/ic_project/DE0_CV/design/LSU.sv|
+!i113 1
+Z15 o-sv -work work
+Z16 !s92 -sv -work work +incdir+C:/Users/user/Desktop/ic_project/DE0_CV/design
+R6
+n@l@s@u
+vProgram_Rom
+R1
+!s110 1767972293
+!i10b 1
+!s100 JGTU7bMkb2S50AeORac;I3
+I8l@Hbg`F]W7>aLk[D:XLP1
+R3
+!s105 Program_Rom_sv_unit
+S1
+R0
+w1767971588
+8C:/Users/user/Desktop/ic_project/DE0_CV/design/Program_Rom.sv
+FC:/Users/user/Desktop/ic_project/DE0_CV/design/Program_Rom.sv
+L0 1
+R4
+r1
+!s85 0
+31
+Z17 !s108 1767972293.000000
+!s107 C:/Users/user/Desktop/ic_project/DE0_CV/design/Program_Rom.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/user/Desktop/ic_project/DE0_CV/design|C:/Users/user/Desktop/ic_project/DE0_CV/design/Program_Rom.sv|
+!i113 1
+R15
+R16
+R6
+n@program_@rom
+vRAM
+R1
+R7
+!i10b 1
+!s100 n[?>Q7jikWIh9hG3mUidY0
+I9lEHFf1[C^J0R;a::d]f21
+R3
+R8
+S1
+R0
+R9
+R10
+R11
+L0 221
+R4
+r1
+!s85 0
+31
+R12
+R13
+R14
+!i113 1
+R15
+R16
+R6
+n@r@a@m
+vReg_file
+R1
+R7
+!i10b 1
+!s100 5H0WI3bC=Fe<eShk26dl;2
+IfR_aORgiL;k68H`0gV8c@1
+R3
+!s105 Reg_file_sv_unit
+S1
+R0
+w1767971617
+8C:/Users/user/Desktop/ic_project/DE0_CV/design/Reg_file.sv
+FC:/Users/user/Desktop/ic_project/DE0_CV/design/Reg_file.sv
+L0 2
+R4
+r1
+!s85 0
+31
+R17
+!s107 C:/Users/user/Desktop/ic_project/DE0_CV/design/Reg_file.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/user/Desktop/ic_project/DE0_CV/design|C:/Users/user/Desktop/ic_project/DE0_CV/design/Reg_file.sv|
+!i113 1
+R15
+R16
+R6
+n@reg_file
+vRISC_V
 R1
 R2
 !i10b 1
-!s100 AYSgFb;^maJWHVOKgVgi?2
-IYSKZRJQaDTR_jVc8zO7<N0
+!s100 @WVj;Ud8T=7AzEmX]768G1
+I>L4Rjm7[jED37L;HZ7XW^1
 R3
-!s105 DE0_CV_sv_unit
+!s105 RISC_V_sv_unit
 S1
 R0
-w1694148872
-8../../design/DE0_CV.sv
-F../../design/DE0_CV.sv
-L0 6
+w1767971435
+8../../design/RISC_V.sv
+F../../design/RISC_V.sv
+L0 3
 R4
 r1
 !s85 0
 31
 R5
-!s107 ../../design/DE0_CV.sv|
-!s90 -reportprogress|300|../../design/DE0_CV.sv|
+!s107 ..\..\design\defines.sv|../../design/RISC_V.sv|
+!s90 -reportprogress|300|../../design/RISC_V.sv|
 !i113 1
 R6
-n@d@e0_@c@v
+n@r@i@s@c_@v
 vtestbench
 R1
 R2
 !i10b 1
-!s100 9U>locJO5SbR64Id_LRfm1
-IP8C^XBj9=FJHdZndOKiKQ3
+!s100 @=GNAlN1ILEzWCS4UBIE;3
+IaZ_<UjGoKNSeYXc9@hk?o3
 R3
 !s105 testbench_sv_unit
 S1
 R0
-w1694148935
+w1767972049
 8../tb/testbench.sv
 F../tb/testbench.sv
-L0 1
+L0 2
 R4
 r1
 !s85 0
