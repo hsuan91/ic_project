@@ -6,6 +6,7 @@ vlib rtl_work
 vmap work rtl_work
 
 vlog -sv -work work +incdir+C:/Users/user/Desktop/ic_project/DE0_CV/simulation/tb {C:/Users/user/Desktop/ic_project/DE0_CV/simulation/tb/testbench.sv}
+vlog -sv -work work +incdir+C:/Users/user/Desktop/ic_project/DE0_CV/design {C:/Users/user/Desktop/ic_project/DE0_CV/design/RAM.sv}
 vlog -sv -work work +incdir+C:/Users/user/Desktop/ic_project/DE0_CV/design {C:/Users/user/Desktop/ic_project/DE0_CV/design/Program_Rom.sv}
 vlog -sv -work work +incdir+C:/Users/user/Desktop/ic_project/DE0_CV/design {C:/Users/user/Desktop/ic_project/DE0_CV/design/Reg_file.sv}
 vlog -sv -work work +incdir+C:/Users/user/Desktop/ic_project/DE0_CV/design {C:/Users/user/Desktop/ic_project/DE0_CV/design/defines.sv}
