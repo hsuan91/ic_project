@@ -73,19 +73,69 @@ module DE0_CV(
 //  REG/WIRE declarations
 //=======================================================
 
-
+	//`define USE_CLOCK_DIVIDER
+	
+	logic [31:0] regs_31;
+	logic clk;
+	logic clk_div;
 
 
 //=======================================================
 //  Structural coding
 //=======================================================
-adder_4bit s1(
-	.s(LEDR[3:0]),
-	.a(SW[7:4]),
-	.b(SW[3:0])
+
+	`ifdef USE_CLOCK_DIVIDER
+		clock_divider u_clock_divider(
+			.clk(CLOCK_50),
+			.rst(~RESET_N),
+			.DIVISOR(10_000_000),
+			.clk_out(clk_div)
+		);
+		assign clk = clk_div;
+	`else
+		assign clk = CLOCK_50;
+	`endif
+	
+	RISC_V u_RISC_V(
+		.clk(clk),
+		.rst(~RESET_N),
+		.regs_31(regs_31)
 	);
-
 	
-	
+// LED 
 
+	assign LEDR = regs_31[9:0];
+	
+// HEX6~HEX0    hex0 為各位數
+
+	seven_segment_display u_seven_segment_display(	
+    .digit(regs_31[3:0]), 
+    .seg(HEX0)
+	);
+	
+	seven_segment_display u_seven_segment_display1(
+    .digit(regs_31[7:4]),
+    .seg(HEX1)
+	);
+	
+	seven_segment_display u_seven_segment_display2(
+    .digit(regs_31[11:8]),
+    .seg(HEX2)
+	);
+	
+	seven_segment_display u_seven_segment_display3(
+    .digit(regs_31[15:12]),   
+   .seg(HEX3)    
+	);
+	
+	seven_segment_display u_seven_segment_display4(
+    .digit(regs_31[19:16]),  
+   .seg(HEX4)    
+	);
+	
+	seven_segment_display u_seven_segment_display5(
+    .digit(regs_31[24:20]),   
+   .seg(HEX5)     
+	);
+	
 endmodule
