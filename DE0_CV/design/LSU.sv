@@ -43,40 +43,40 @@ module LSU(
 	always_comb begin
 		unique case (ram_addr[1:0])
 			2'b00: begin
-				ram_addr_0 = ram_addr[31:2]; 
-				ram_addr_1 = ram_addr[31:2];
-				ram_addr_2 = ram_addr[31:2];
-				ram_addr_3 = ram_addr[31:2];
+				ram_addr_0   = ram_addr[31:2]; 
+				ram_addr_1   = ram_addr[31:2];
+				ram_addr_2   = ram_addr[31:2];
+				ram_addr_3   = ram_addr[31:2];
 				write_data_0 = write_data[7:0];
 				write_data_1 = write_data[15:8];
 				write_data_2 = write_data[23:16];
 				write_data_3 = write_data[31:24];
 			end
 			2'b01: begin
-				ram_addr_0 = ram_addr_p4;
-				ram_addr_1 = ram_addr[31:2]; 
-				ram_addr_2 = ram_addr[31:2];
-				ram_addr_3 = ram_addr[31:2];
+				ram_addr_0   = ram_addr_p4;
+				ram_addr_1   = ram_addr[31:2]; 
+				ram_addr_2   = ram_addr[31:2];
+				ram_addr_3   = ram_addr[31:2];
 				write_data_0 = write_data[31:24];
 				write_data_1 = write_data[7:0];
 				write_data_2 = write_data[15:8];
 				write_data_3 = write_data[23:16];
 			end
 			2'b10: begin
-				ram_addr_0 = ram_addr_p4;
-				ram_addr_1 = ram_addr_p4;
-				ram_addr_2 = ram_addr[31:2]; 
-				ram_addr_3 = ram_addr[31:2];
+				ram_addr_0   = ram_addr_p4;
+				ram_addr_1   = ram_addr_p4;
+				ram_addr_2   = ram_addr[31:2]; 
+				ram_addr_3   = ram_addr[31:2];
 				write_data_0 = write_data[23:16];
 				write_data_1 = write_data[31:24];
 				write_data_2 = write_data[7:0];
 				write_data_3 = write_data[15:8];
 			end
 			2'b11: begin
-				ram_addr_0 = ram_addr_p4;
-				ram_addr_1 = ram_addr_p4;
-				ram_addr_2 = ram_addr_p4;
-				ram_addr_3 = ram_addr[31:2];
+				ram_addr_0   = ram_addr_p4;
+				ram_addr_1   = ram_addr_p4;
+				ram_addr_2   = ram_addr_p4;
+				ram_addr_3   = ram_addr[31:2];
 				write_data_0 = write_data[15:8];
 				write_data_1 = write_data[23:16];
 				write_data_2 = write_data[31:24];

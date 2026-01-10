@@ -69,23 +69,23 @@ begin
 	if(rst | flush_IFID_r)
 	begin
 		inst_r 	<= `I_NOP;
-		pc_r 		<= 0;
+		pc_r 	<= 0;
 	end
 	else 
 	begin
 		inst_r 	<= inst_;
-		pc_r 		<= pc;
+		pc_r 	<= pc;
 	end
 end
 
 // INST_DEC
 
-assign opcode_ 	= inst_r[6:0];
+assign opcode_ 		= inst_r[6:0];
 assign addr_rd_ 	= inst_r[11:7];
-assign funct3_ 	= inst_r[14:12];
+assign funct3_ 		= inst_r[14:12];
 assign addr_rs1_ 	= inst_r[19:15];
 assign addr_rs2_ 	= inst_r[24:20];
-assign funct7_ 	= inst_r[31:25];
+assign funct7_ 		= inst_r[31:25];
 
 assign IMM_I 			= {{20{inst_r[31]}}, inst_r[31:20]};	// I-type立即值
 assign IMM_B 			= {{20{inst_r[31]}}, inst_r[7], inst_r[30:25], inst_r[11:8], 1'b0};	// B-type立即值
@@ -100,7 +100,7 @@ always_comb begin
 		`Opcode_JAL: 	imm_ = IMM_JAL;
 		`Opcode_JALR: 	imm_ = IMM_I;
 		`Opcode_LUI: 	imm_ = IMM_LUI_AUIPC;
-		`Opcode_AUIPC: imm_ = IMM_LUI_AUIPC;
+		`Opcode_AUIPC:  imm_ = IMM_LUI_AUIPC;
 		`Opcode_L:	 	imm_ = IMM_I;
 		`Opcode_S:	 	imm_ = IMM_S;
 	endcase
@@ -124,7 +124,7 @@ Reg_file u_Reg_file(
 
 // CONTROLLER
 
-typedef enum {S0,S1,S2,S3}FSM_STATE;
+typedef enum {S0,S1,S2,S3} FSM_STATE;
 FSM_STATE ps, ns;
 
 always_ff @(posedge clk) begin
@@ -139,17 +139,17 @@ end
 always_comb
 begin
 	rst_pc_ 			= 0;
-	sel_pc_			= 0;
-	flush_IFID_ 	= 0;
-	flush_IDEX_ 	= 0;
-	write_regf_en_ = 0;
-	op_				= 0;
-	sel_alu_a_		= 0;
-	sel_alu_b_		= 0;
-	sel_jump_		= 0;
-	sel_rd_value_	= 0;
-	write_regf_en_	= 0;
-	write_ram_		= 0;	// = write_read_
+	sel_pc_				= 0;
+	flush_IFID_ 		= 0;
+	flush_IDEX_ 		= 0;
+	write_regf_en_ 		= 0;
+	op_					= 0;
+	sel_alu_a_			= 0;
+	sel_alu_b_			= 0;
+	sel_jump_			= 0;
+	sel_rd_value_		= 0;
+	write_regf_en_		= 0;
+	write_ram_			= 0;	// = write_read_
 	ns					= ps;
 	unique case(ps)
 		S0:
@@ -176,9 +176,9 @@ begin
 							unique case(funct3_)
 								`F_ADDI:			op_ = `ALUOP_ADD;
 								`F_SLTI:			op_ = `ALUOP_LT;
-								`F_SLTIU:		op_ = `ALUOP_LTU;
+								`F_SLTIU:			op_ = `ALUOP_LTU;
 								`F_ANDI:			op_ = `ALUOP_AND;
-								`F_ORI:			op_ = `ALUOP_OR;
+								`F_ORI:				op_ = `ALUOP_OR;
 								`F_XORI:			op_ = `ALUOP_XOR;
 								`F_SLLI:			op_ = `ALUOP_SLL;
 								`F_SRLI_SRAI:
@@ -208,7 +208,7 @@ begin
 								unique case(funct3_)
 									`F_ADD_SUB:		op_ = `ALUOP_ADD;	
 									`F_SLT:			op_ = `ALUOP_LT;
-									`F_SLTU:			op_ = `ALUOP_LTU;
+									`F_SLTU:		op_ = `ALUOP_LTU;
 									`F_AND:			op_ = `ALUOP_AND;
 									`F_OR:			op_ = `ALUOP_OR;
 									`F_XOR:			op_ = `ALUOP_XOR;
@@ -220,13 +220,13 @@ begin
 							begin
 								write_regf_en_ = 1;
 								unique case(funct3_)
-									`F_MUL:		sel_rd_value_ = 2;
-									`F_MULHU:	sel_rd_value_ = 2;
-									`F_MULHSU:	sel_rd_value_ = 2;
+									`F_MUL:			sel_rd_value_ = 2;
+									`F_MULHU:		sel_rd_value_ = 2;
+									`F_MULHSU:		sel_rd_value_ = 2;
 									`F_MULH:		sel_rd_value_ = 2;
-									`F_DIV:		sel_rd_value_ = 3;
+									`F_DIV:			sel_rd_value_ = 3;
 									`F_DIVU:		sel_rd_value_ = 3;
-									`F_REM:		sel_rd_value_ = 3;
+									`F_REM:			sel_rd_value_ = 3;
 									`F_REMU:		sel_rd_value_ = 3;
 								endcase
 							end
@@ -240,7 +240,7 @@ begin
 							//等於
 							`F_BEQ: begin
 								if(BEQ_FLAG) begin	//x[rs1] == x[rs2] 跳躍
-									sel_pc_ = 1;
+									sel_pc_ 	= 1;
 									flush_IFID_ = 1;
 									flush_IDEX_ = 1;
 								end
@@ -248,35 +248,35 @@ begin
 							//不等於
 							`F_BNE: begin
 								if(BNE_FLAG) begin	//x[rs1] != x[rs2] 跳躍
-									sel_pc_ = 1;
+									sel_pc_ 	= 1;
 									flush_IFID_ = 1;
 									flush_IDEX_ = 1;
 								end
 							end
 							`F_BLT: begin
 								if(BLT_FLAG) begin	
-									sel_pc_ = 1;
+									sel_pc_ 	= 1;
 									flush_IFID_ = 1;
 									flush_IDEX_ = 1;
 								end
 							end
 							`F_BGE: begin
 								if(BGE_FLAG) begin	
-									sel_pc_ = 1;
+									sel_pc_ 	= 1;
 									flush_IFID_ = 1;
 									flush_IDEX_ = 1;
 								end
 							end
 							`F_BLTU: begin
 								if(BLTU_FLAG) begin	
-									sel_pc_ = 1;
+									sel_pc_ 	= 1;
 									flush_IFID_ = 1;
 									flush_IDEX_ = 1;
 								end
 							end
 							`F_BGEU: begin
 								if(BGEU_FLAG) begin	
-									sel_pc_ = 1;
+									sel_pc_ 	= 1;
 									flush_IFID_ = 1;
 									flush_IDEX_ = 1;
 								end
@@ -287,57 +287,57 @@ begin
 					`Opcode_JAL:
 					begin
 						sel_pc_ 			= 1;
-						flush_IFID_ 	= 1;
-						flush_IDEX_ 	= 1;
-						sel_alu_a_ 		= 1;
-						sel_alu_b_		= 2;
-						sel_jump_		= 1;
-						write_regf_en_	= 1;
-						op_ = `ALUOP_ADD;
+						flush_IFID_ 		= 1;
+						flush_IDEX_ 		= 1;
+						sel_alu_a_ 			= 1;
+						sel_alu_b_			= 2;
+						sel_jump_			= 1;
+						write_regf_en_		= 1;
+						op_ 				= `ALUOP_ADD;
 					end
 					`Opcode_JALR:
 					begin
 						sel_pc_ 			= 1;
-						flush_IFID_ 	= 1;
-						flush_IDEX_ 	= 1;
-						sel_alu_a_ 		= 1;
-						sel_alu_b_		= 2;
-						sel_jump_		= 0;
-						write_regf_en_	= 1;
-						op_ = `ALUOP_ADD;
+						flush_IFID_ 		= 1;
+						flush_IDEX_ 		= 1;
+						sel_alu_a_ 			= 1;
+						sel_alu_b_			= 2;
+						sel_jump_			= 0;
+						write_regf_en_		= 1;
+						op_ 				= `ALUOP_ADD;
 					end
 					`Opcode_LUI:
 					begin
-						sel_alu_b_		= 0;
-						write_regf_en_	= 1;
-						op_ = `ALUOP_B;
+						sel_alu_b_			= 0;
+						write_regf_en_		= 1;
+						op_ 				= `ALUOP_B;
 					end
 					`Opcode_AUIPC:
 					begin
-						sel_alu_a_		= 1;
-						sel_alu_b_		= 0;
-						write_regf_en_	= 1;
-						op_ = `ALUOP_ADD;
+						sel_alu_a_			= 1;
+						sel_alu_b_			= 0;
+						write_regf_en_		= 1;
+						op_ 				= `ALUOP_ADD;
 					end
 					`Opcode_L:
 					begin
-						sel_rd_value_	= 1;
-						write_regf_en_	= 1;
+						sel_rd_value_		= 1;
+						write_regf_en_		= 1;
 						unique case(funct3_)
-							`F_LB		:op_ = `ALUOP_ADD;
-							`F_LH		:op_ = `ALUOP_ADD;
-							`F_LW		:op_ = `ALUOP_ADD;
-							`F_LBU	:op_ = `ALUOP_ADD;
-							`F_LHU	:op_ = `ALUOP_ADD;
+							`F_LB:			op_ = `ALUOP_ADD;
+							`F_LH:			op_ = `ALUOP_ADD;
+							`F_LW:			op_ = `ALUOP_ADD;
+							`F_LBU:			op_ = `ALUOP_ADD;
+							`F_LHU:			op_ = `ALUOP_ADD;
 						endcase
 					end
 					`Opcode_S:
 					begin
 						write_ram_ = 1;
 						unique case(funct3_)
-							`F_SB		:op_ = `ALUOP_ADD;
-							`F_SH		:op_ = `ALUOP_ADD;
-							`F_SW		:op_ = `ALUOP_ADD;
+							`F_SB:			op_ = `ALUOP_ADD;
+							`F_SH:			op_ = `ALUOP_ADD;
+							`F_SW:			op_ = `ALUOP_ADD;
 						endcase
 					end
 				endcase
@@ -347,9 +347,9 @@ end
 
 // Branch Compare
 
-assign BEQ_FLAG	= (rs1_value_ == rs2_value_);
+assign BEQ_FLAG		= (rs1_value_ == rs2_value_);
 assign BNE_FLAG 	= (rs1_value_ != rs2_value_);
-assign BLT_FLAG	= ($signed(rs1_value_) < $signed(rs2_value_));
+assign BLT_FLAG		= ($signed(rs1_value_) < $signed(rs2_value_));
 assign BGE_FLAG 	= ($signed(rs1_value_) >= $signed(rs2_value_));
 assign BLTU_FLAG	= (rs1_value_ < rs2_value_);
 assign BGEU_FLAG 	= (rs1_value_ >= rs2_value_);
@@ -362,18 +362,18 @@ begin
 	begin
 		rs1_value_r 		<= 0;
 		rs2_value_r 		<= 0;
-		imm_r					<= 0;
+		imm_r				<= 0;
 		addr_rd_r			<= 0;
-		op_r					<= 0;
-		write_regf_en_r	<= 0;
+		op_r				<= 0;
+		write_regf_en_r		<= 0;
 		sel_alu_a_r			<= 0;
 		sel_alu_b_r			<= 0;
 		flush_IDEX_r		<= 0;
 		flush_IFID_r		<= 0;
-		sel_pc_r				<= 0;
-		pc_rr					<= 0;
+		sel_pc_r			<= 0;
+		pc_rr				<= 0;
 		sel_jump_r			<= 0;
-		funct3_r				<= 0;
+		funct3_r			<= 0;
 		write_ram_r			<= 0;
 		sel_rd_value_r		<= 0;
 	end
@@ -381,18 +381,18 @@ begin
 	begin
 		rs1_value_r 		<= rs1_value_;
 		rs2_value_r 		<= rs2_value_;
-		imm_r					<= imm_;
+		imm_r				<= imm_;
 		addr_rd_r			<= addr_rd_;
-		op_r					<= op_;
-		write_regf_en_r	<= write_regf_en_;
+		op_r				<= op_;
+		write_regf_en_r		<= write_regf_en_;
 		sel_alu_a_r			<= sel_alu_a_;
 		sel_alu_b_r			<= sel_alu_b_;
 		flush_IDEX_r		<= flush_IDEX_;
 		flush_IFID_r		<= flush_IFID_;
-		sel_pc_r				<= sel_pc_;
-		pc_rr					<= pc_r;
+		sel_pc_r			<= sel_pc_;
+		pc_rr				<= pc_r;
 		sel_jump_r			<= sel_jump_;
-		funct3_r				<= funct3_;
+		funct3_r			<= funct3_;
 		write_ram_r			<= write_ram_;
 		sel_rd_value_r		<= sel_rd_value_;
 	end
@@ -402,35 +402,35 @@ end
 
 always_comb begin
 	unique case(sel_alu_a_r)
-		0:alu_a_	= rs1_value_r;
-		1:alu_a_	= pc_rr;
+		0:	alu_a_	= rs1_value_r;
+		1:	alu_a_	= pc_rr;
 	endcase
 end
 
 always_comb begin
 	unique case(sel_alu_b_r)
-		0:alu_b_	= imm_r;
-		1:alu_b_	= rs2_value_r;
-		2:alu_b_	= 32'd4;
+		0:	alu_b_	= imm_r;
+		1:	alu_b_	= rs2_value_r;
+		2:	alu_b_	= 32'd4;
 	endcase
 end
 
 always_comb begin
 	unique case(op_r)
-		`ALUOP_ADD			: alu_out = alu_a_ + alu_b_;
-      `ALUOP_SUB			: alu_out = $signed(alu_a_) - $signed(alu_b_);
-		`ALUOP_AND			: alu_out = alu_a_ & alu_b_;	
-      `ALUOP_OR			: alu_out = alu_a_ | alu_b_;		
-      `ALUOP_XOR			: alu_out = alu_a_ ^ alu_b_;		
-      `ALUOP_A				: alu_out = alu_a_;		
-      `ALUOP_A_ADD_4		: alu_out = alu_a_ + 4;	
-      `ALUOP_LTU			: alu_out = alu_a_ < alu_b_;	
-      `ALUOP_LT			: alu_out = $signed(alu_a_) < $signed(alu_b_);			
-      `ALUOP_SLL			: alu_out = alu_a_ << alu_b_[4:0];		
-      `ALUOP_SRL			: alu_out = alu_a_ >> alu_b_[4:0];		
-      `ALUOP_SRA			: alu_out = $signed(alu_a_) >>> alu_b_[4:0];
-      `ALUOP_B				: alu_out = alu_b_;
-		default : alu_out = alu_a_;
+		`ALUOP_ADD: 		alu_out = alu_a_ + alu_b_;
+      	`ALUOP_SUB: 		alu_out = $signed(alu_a_) - $signed(alu_b_);
+		`ALUOP_AND: 		alu_out = alu_a_ & alu_b_;	
+     	 `ALUOP_OR: 		alu_out = alu_a_ | alu_b_;		
+      	`ALUOP_XOR: 		alu_out = alu_a_ ^ alu_b_;		
+      	`ALUOP_A: 			alu_out = alu_a_;		
+      	`ALUOP_A_ADD_4: 	alu_out = alu_a_ + 4;	
+      	`ALUOP_LTU: 		alu_out = alu_a_ < alu_b_;	
+      	`ALUOP_LT:			alu_out = $signed(alu_a_) < $signed(alu_b_);			
+      	`ALUOP_SLL:			alu_out = alu_a_ << alu_b_[4:0];		
+      	`ALUOP_SRL:			alu_out = alu_a_ >> alu_b_[4:0];		
+      	`ALUOP_SRA:			alu_out = $signed(alu_a_) >>> alu_b_[4:0];
+      	`ALUOP_B:			alu_out = alu_b_;
+		default: 			alu_out = alu_a_;
 	endcase
 end
 
@@ -449,41 +449,41 @@ LSU LSU_1(
 always_comb begin
 	unique case (funct3_r)
 		`F_MUL:		product = $signed(rs1_value_r) * $signed(rs2_value_r);
-		`F_MULH:		product = $signed(rs1_value_r) * $signed(rs2_value_r);
+		`F_MULH:	product = $signed(rs1_value_r) * $signed(rs2_value_r);
 		`F_MULHSU:	product = $signed($signed(rs1_value_r) * rs2_value_r);
 		`F_MULHU:	product = rs1_value_r * rs2_value_r;
 	endcase
 end
-assign mul_out = (funct3_r == `F_MUL) ? product[31:0] : product[63:32];
+assign mul_out 	= (funct3_r == `F_MUL) ? product[31:0] : product[63:32];
 
 // div
 always_comb begin
 	unique case (funct3_r)
-		`F_DIV:	div_out = $signed(rs1_value_r) / $signed(rs2_value_r);
+		`F_DIV:		div_out = $signed(rs1_value_r) / $signed(rs2_value_r);
 		`F_DIVU:	div_out = rs1_value_r / rs2_value_r;
-		`F_REM:	div_out = $signed(rs1_value_r) % $signed(rs2_value_r);
+		`F_REM:		div_out = $signed(rs1_value_r) % $signed(rs2_value_r);
 		`F_REMU:	div_out = rs1_value_r % rs2_value_r;
 	endcase
 end
 	
 always_comb begin
 	unique case(sel_rd_value_r)
-		0: rd_value_ = alu_out;
-		1: rd_value_ = read_data;
-		2: rd_value_ = mul_out;
-		3: rd_value_ = div_out;
+		0: 	rd_value_ = alu_out;
+		1: 	rd_value_ = read_data;
+		2: 	rd_value_ = mul_out;
+		3: 	rd_value_ = div_out;
 	endcase
 end
 
 // ALU右邊的+ 
-assign base_addr_ = sel_jump_r ? pc_rr : rs1_value_r;
-assign j_addr_ = base_addr_ + imm_r;
-assign jump_addr_ = {j_addr_[31:1], (j_addr_[0] & sel_jump_r)};
+assign base_addr_ 	= sel_jump_r ? pc_rr : rs1_value_r;
+assign j_addr_		= base_addr_ + imm_r;
+assign jump_addr_ 	= {j_addr_[31:1], (j_addr_[0] & sel_jump_r)};
 
 //forwarding unit
-assign sel_rs1_value_ = write_regf_en_r & (addr_rd_r == addr_rs1_);
-assign sel_rs2_value_ = write_regf_en_r & (addr_rd_r == addr_rs2_);
-assign rs1_value_ = sel_rs1_value_ ? rd_value_ : rs1_value;
-assign rs2_value_ = sel_rs2_value_ ? rd_value_ : rs2_value;
+assign sel_rs1_value_ 	= write_regf_en_r & (addr_rd_r == addr_rs1_);
+assign sel_rs2_value_ 	= write_regf_en_r & (addr_rd_r == addr_rs2_);
+assign rs1_value_ 		= sel_rs1_value_ ? rd_value_ : rs1_value;
+assign rs2_value_ 		= sel_rs2_value_ ? rd_value_ : rs2_value;
 
 endmodule
