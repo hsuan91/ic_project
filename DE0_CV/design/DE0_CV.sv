@@ -79,6 +79,13 @@ module DE0_CV(
 
 
 
+	
+
+
+//=======================================================
+//  Structural coding
+//=======================================================
+
 	`ifdef USE_CLOCK_DIVIDER
 		clock_divider u_clock_devider(
 			.clk      (CLOCK_50),
@@ -88,29 +95,6 @@ module DE0_CV(
 			.clk_out  (clk_div   ),
 		);
 		
-		assign clk = clk_div;
-	`else
-		assign clk = CLOCK_50;
-	`endif
-
-	//`define USE_CLOCK_DIVIDER
-	
-	logic [31:0] regs_31;
-	logic clk;
-	logic clk_div;
-
-
-//=======================================================
-//  Structural coding
-//=======================================================
-
-	`ifdef USE_CLOCK_DIVIDER
-		clock_divider u_clock_divider(
-			.clk(CLOCK_50),
-			.rst(~RESET_N),
-			.DIVISOR(10_000_000),
-			.clk_out(clk_div)
-		);
 		assign clk = clk_div;
 	`else
 		assign clk = CLOCK_50;
