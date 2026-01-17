@@ -1,0 +1,179 @@
+# Reading C:/altera/12.1/modelsim_ase/tcl/vsim/pref.tcl 
+# OpenFile D:/School/flash/loader/test.mpf 
+# Loading project test
+# Compile of MX25L1006E.v was successful.
+# Compile of loader_flash_V2.v was successful.
+# Compile of tb_top.v was successful.
+# 3 compiles, 0 failed with no errors. 
+# Compile of MX25L1006E.v was successful.
+# Compile of loader_flash_V2.v failed with 1 errors.
+# Compile of tb_top.v was successful.
+# 3 compiles, 1 failed with 1 error. 
+# Compile of loader_flash_V2.v was successful.
+vsim work.tb_top
+# vsim work.tb_top 
+# Loading work.tb_top
+# Loading work.loader
+# Loading work.MX25L1006E
+# ** Warning: (vsim-3015) D:/School/flash/loader/tb_top.v(11): [PCDPC] - Port size (11 or 11) does not match connection size (12) for port 'sram_addr'. The port definition is at: D:/School/flash/loader/loader_flash_V2.v(1).
+# 
+#         Region: /tb_top/loader0
+add wave -position insertpoint sim:/tb_top/*
+# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
+# 
+#           File in use by: User  Hostname: TIM  ProcessID: 12164
+# 
+#           Attempting to use alternate WLF file "./wlftv82c4a".
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+# 
+#           Using alternate file: ./wlftv82c4a
+# 
+run -all
+# Break in Module tb_top at D:/School/flash/loader/tb_top.v line 26
+add wave -position insertpoint  \
+sim:/tb_top/loader0/present_state
+# Compile of loader_flash_V2.v failed with 2 errors.
+# Compile of tb_top.v failed with 1 errors.
+# 2 compiles, 2 failed with 3 errors. 
+# Compile of loader_flash_V2.v was successful.
+# Compile of tb_top.v was successful.
+# 2 compiles, 0 failed with no errors. 
+restart
+# Loading work.tb_top
+# Loading work.loader
+# ** Warning: (vsim-3015) D:/School/flash/loader/tb_top.v(11): [PCDPC] - Port size (11 or 11) does not match connection size (12) for port 'sram_addr'. The port definition is at: D:/School/flash/loader/loader_flash_V2.v(1).
+# 
+#         Region: /tb_top/loader0
+run -all
+# Break in Module tb_top at D:/School/flash/loader/tb_top.v line 26
+# Compile of tb_top.v was successful.
+restart
+# Loading work.tb_top
+# ** Warning: (vsim-3015) D:/School/flash/loader/tb_top.v(11): [PCDPC] - Port size (11 or 11) does not match connection size (12) for port 'sram_addr'. The port definition is at: D:/School/flash/loader/loader_flash_V2.v(1).
+# 
+#         Region: /tb_top/loader0
+run -all
+# Break in Module tb_top at D:/School/flash/loader/tb_top.v line 26
+# Compile of loader_flash_V2.v was successful.
+restart
+# Loading work.loader
+# ** Warning: (vsim-3015) D:/School/flash/loader/tb_top.v(11): [PCDPC] - Port size (11 or 11) does not match connection size (12) for port 'sram_addr'. The port definition is at: D:/School/flash/loader/loader_flash_V2.v(1).
+# 
+#         Region: /tb_top/loader0
+run -all
+# Break in Module tb_top at D:/School/flash/loader/tb_top.v line 26
+add wave -position insertpoint  \
+sim:/tb_top/loader0/reset_pic
+add wave -position insertpoint  \
+sim:/tb_top/loader0/cold_boot_reset
+restart
+# ** Warning: (vsim-3015) D:/School/flash/loader/tb_top.v(11): [PCDPC] - Port size (11 or 11) does not match connection size (12) for port 'sram_addr'. The port definition is at: D:/School/flash/loader/loader_flash_V2.v(1).
+# 
+#         Region: /tb_top/loader0
+run -all
+# Break in Module tb_top at D:/School/flash/loader/tb_top.v line 26
+# Compile of loader_flash_V2.v failed with 1 errors.
+# Compile of loader_flash_V2.v was successful.
+restart
+# Loading work.loader
+# ** Warning: (vsim-3015) D:/School/flash/loader/tb_top.v(11): [PCDPC] - Port size (11 or 11) does not match connection size (12) for port 'sram_addr'. The port definition is at: D:/School/flash/loader/loader_flash_V2.v(1).
+# 
+#         Region: /tb_top/loader0
+run -all
+# Break in Module tb_top at D:/School/flash/loader/tb_top.v line 26
+# Compile of loader_flash_V2.v was successful.
+restart
+# Loading work.loader
+# ** Warning: (vsim-3015) D:/School/flash/loader/tb_top.v(11): [PCDPC] - Port size (11 or 11) does not match connection size (12) for port 'sram_addr'. The port definition is at: D:/School/flash/loader/loader_flash_V2.v(1).
+# 
+#         Region: /tb_top/loader0
+run -all
+# Break in Module tb_top at D:/School/flash/loader/tb_top.v line 26
+# Compile of loader_flash_V2.v was successful.
+restart
+# Loading work.loader
+# ** Warning: (vsim-3015) D:/School/flash/loader/tb_top.v(11): [PCDPC] - Port size (11 or 11) does not match connection size (12) for port 'sram_addr'. The port definition is at: D:/School/flash/loader/loader_flash_V2.v(1).
+# 
+#         Region: /tb_top/loader0
+run -all
+# Break in Module tb_top at D:/School/flash/loader/tb_top.v line 26
+add wave -position insertpoint  \
+sim:/tb_top/loader0/sram_addr_temp
+restart
+# ** Warning: (vsim-3015) D:/School/flash/loader/tb_top.v(11): [PCDPC] - Port size (11 or 11) does not match connection size (12) for port 'sram_addr'. The port definition is at: D:/School/flash/loader/loader_flash_V2.v(1).
+# 
+#         Region: /tb_top/loader0
+run -all
+# Break in Module tb_top at D:/School/flash/loader/tb_top.v line 26
+# Compile of tb_top.v was successful.
+restart
+# Loading work.tb_top
+run -all
+# Break in Module tb_top at D:/School/flash/loader/tb_top.v line 26
+add wave -position insertpoint  \
+sim:/tb_top/loader0/bit16
+# Compile of loader_flash_V2.v was successful.
+restart
+# Loading work.loader
+run -all
+# Break in Module tb_top at D:/School/flash/loader/tb_top.v line 26
+# Compile of loader_flash_V2.v failed with 1 errors.
+# Compile of loader_flash_V2.v was successful.
+restart
+# Loading work.loader
+add wave -position insertpoint  \
+sim:/tb_top/loader0/bit16_count
+# Compile of loader_flash_V2.v was successful.
+restart
+# Loading work.loader
+run -all
+# Break in Module tb_top at D:/School/flash/loader/tb_top.v line 26
+# Compile of loader_flash_V2.v was successful.
+restart
+# Loading work.loader
+run -all
+# Break in Module tb_top at D:/School/flash/loader/tb_top.v line 26
+view -new wave
+# -new not supported on PE
+add wave -position insertpoint  \
+sim:/tb_top/loader0/data_temp
+restart
+run -all
+# Break in Module tb_top at D:/School/flash/loader/tb_top.v line 26
+# Compile of loader_flash_V2.v was successful.
+restart
+# Loading work.loader
+run -all
+# Break in Module tb_top at D:/School/flash/loader/tb_top.v line 26
+# Compile of loader_flash_V2.v was successful.
+restart
+# Loading work.loader
+run -all
+# Break in Module tb_top at D:/School/flash/loader/tb_top.v line 26
+# Compile of MX25L1006E.v was successful.
+# Compile of loader_flash_V2.v was successful.
+# Compile of tb_top.v was successful.
+# 3 compiles, 0 failed with no errors. 
+restart
+# Loading work.tb_top
+# Loading work.loader
+# Loading work.MX25L1006E
+run -all
+# Break in Module tb_top at D:/School/flash/loader/tb_top.v line 26
+# Compile of loader_flash_V2.v was successful.
+restart
+# Loading work.loader
+run -all
+# Break in Module tb_top at D:/School/flash/loader/tb_top.v line 26
+# Compile of loader_flash_V2.v was successful.
+restart
+# Loading work.loader
+run -all
+# Break in Module tb_top at D:/School/flash/loader/tb_top.v line 26
+add wave -position insertpoint  \
+sim:/tb_top/loader0/config_flag
+# Compile of loader_flash_V2.v was successful.
+restart
+# Loading work.loader
+run -all
+# Break in Module tb_top at D:/School/flash/loader/tb_top.v line 26

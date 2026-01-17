@@ -1,0 +1,22 @@
+D:/School/flash/loader/loader_flash_V2.v {1 {vlog -work work D:/School/flash/loader/loader_flash_V2.v
+Model Technology ModelSim ALTERA vlog 10.1b Compiler 2012.04 Apr 27 2012
+-- Compiling module loader
+
+Top level modules:
+	loader
+
+} {} {}} D:/School/flash/loader/tb_top.v {1 {vlog -work work {D:\School\flash\loader\tb_top.v}
+Model Technology ModelSim ALTERA vlog 10.1b Compiler 2012.04 Apr 27 2012
+-- Compiling module tb_top
+
+Top level modules:
+	tb_top
+
+} {} {}} D:/School/flash/loader/MX25L1006E.v {1 {vlog -work work {D:\School\flash\loader\MX25L1006E.v}
+Model Technology ModelSim ALTERA vlog 10.1b Compiler 2012.04 Apr 27 2012
+-- Compiling module MX25L1006E
+
+Top level modules:
+	MX25L1006E
+
+} {} {}}

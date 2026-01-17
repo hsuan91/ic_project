@@ -1,0 +1,33 @@
+`timescale 1ns / 100ps
+module tb_top;
+wire [13:0]sram_data;//將串列進來的資料轉成並列給SRAM的DATA
+wire [11:0]sram_addr;
+wire [5:0]state_out;
+wire [4:0]bit16_out;
+wire prog_run, reset_pic;//控制PIC的訊號
+reg clk, reset;
+wire wp, hold;
+
+//module loader(count_out, bit16_out, state_out, reset_out, clk_out, sram_data, sram_addr, sram_ce, flash_si, flash_cs, prog_run, reset_pic, flash_so, clk_in, reset);
+loader loader0(count_out, bit16_out, state_out, reset_out, clk_out, sram_data, sram_addr, sram_ce, flash_si, flash_cs, prog_run, reset_pic, flash_so, clk, reset);
+
+//module flash_256k(so, cs, si, sck);
+//flash_256k flash(flash_so, flash_cs, flash_si, clk);
+
+//module MX25L1006E( SCLK, CS, SI, SO, WP, HOLD );
+MX25L1006E flash (clk, flash_cs, flash_si, flash_so, wp, hold);
+
+initial begin
+	clk = 0;reset = 1;
+	force wp = 1; 
+	forcehold = 1;
+	// #40 reset = 0;
+	// #4000 reset = 1;
+	#80 reset = 0;
+	#5000000 $stop;
+end
+
+always #20 clk = ~clk;
+
+
+endmodule

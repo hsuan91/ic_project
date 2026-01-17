@@ -1,0 +1,120 @@
+m255
+K3
+13
+cModel Technology
+Z0 dD:\School\PIC\pic16f84\code\my_2016_12_5
+vflash_256k
+Z1 I`b:=^ICXLnH5BAWG0Ag5P3
+Z2 VE<lEShG]f7Y9gNlRh3m@E2
+Z3 dD:\School\flash\loader
+Z4 w1494224580
+Z5 8D:/School/flash/loader/flash_256k.v
+Z6 FD:/School/flash/loader/flash_256k.v
+L0 1
+Z7 OV;L;10.1d;51
+r1
+31
+Z8 !s90 -reportprogress|300|-work|work|D:/School/flash/loader/flash_256k.v|
+Z9 o-work work -O0
+Z10 !s100 ;AYHnc5P9@:c@aKTo3=>h0
+Z11 !s108 1494224586.652000
+Z12 !s107 D:/School/flash/loader/flash_256k.v|
+!i10b 1
+!s85 0
+!s101 -O0
+vloader
+!i10b 1
+!s100 @Lh[U_FzOM@eIGNjB0nRO0
+II5S@hlkAVgKERb<hELzHM1
+Z13 V<5dKb?59EefmX4l27dJ3K3
+R3
+w1510729650
+8D:/School/flash/loader/loader_flash_V2.v
+FD:/School/flash/loader/loader_flash_V2.v
+L0 1
+Z14 OV;L;10.1b;51
+r1
+!s85 0
+31
+!s108 1511336472.899000
+!s107 D:/School/flash/loader/loader_flash_V2.v|
+!s90 -reportprogress|300|-work|work|D:/School/flash/loader/loader_flash_V2.v|
+!s101 -O0
+R9
+vMX25L1006E
+Z15 IeW=[N]<[aSWKUZU@JdEk:0
+Z16 V4CJoC2zgI^U]U3dK1I8l@2
+R3
+Z17 w1510726830
+Z18 8D:\School\flash\loader\MX25L1006E.v
+Z19 FD:\School\flash\loader\MX25L1006E.v
+L0 46
+R14
+r1
+31
+R9
+Z20 n@m@x25@l1006@e
+Z21 !s100 SJQSOhWGX0AWCXZiLi[Y31
+Z22 !s108 1510726839.230000
+Z23 !s107 D:\School\flash\loader\MX25L1006E.v|
+Z24 !s90 -reportprogress|300|-work|work|D:\School\flash\loader\MX25L1006E.v|
+!i10b 1
+!s85 0
+!s101 -O0
+vtb_flash
+Z25 !s100 ZK4m9MPClInX2KcFKOo7e0
+Z26 Ic6Nf8iaENc8laH5V0JG=L1
+Z27 VPW4?<>8L[U:kV1IKZmAW52
+R3
+Z28 w1489737658
+Z29 8D:/School/flash/loader/tb_flash.v
+Z30 FD:/School/flash/loader/tb_flash.v
+L0 1
+R14
+r1
+31
+Z31 !s90 -reportprogress|300|-work|work|D:/School/flash/loader/tb_flash.v|
+R9
+Z32 !s108 1508729259.608000
+Z33 !s107 D:/School/flash/loader/tb_flash.v|
+!i10b 1
+!s85 0
+!s101 -O0
+vtb_loader
+Z34 !s100 4AULK[e;@Gm>]A1aXdzYK1
+Z35 IA68oR<XCjImnH2b_n=Uzk3
+Z36 VLL^<8[zXBWLSdW[51oZGh0
+R3
+Z37 w1489563038
+Z38 8D:/School/flash/loader/tb_loader.v
+Z39 FD:/School/flash/loader/tb_loader.v
+L0 1
+R14
+r1
+31
+Z40 !s90 -reportprogress|300|-work|work|D:/School/flash/loader/tb_loader.v|
+R9
+Z41 !s108 1508729259.428000
+Z42 !s107 D:/School/flash/loader/tb_loader.v|
+!i10b 1
+!s85 0
+!s101 -O0
+vtb_top
+Z43 I?hXOWf_3SXjga@[h`Xmn>1
+Z44 V[LcaLh[SJXomY3Ki^RaI?1
+R3
+Z45 w1510726837
+Z46 8D:\School\flash\loader\tb_top.v
+Z47 FD:\School\flash\loader\tb_top.v
+L0 2
+R14
+r1
+31
+Z48 !s90 -reportprogress|300|-work|work|D:\School\flash\loader\tb_top.v|
+R9
+Z49 !s100 `n`f6S3h^FAi4o5jC]nj00
+Z50 !s108 1510726839.675000
+Z51 !s107 D:\School\flash\loader\tb_top.v|
+!i10b 1
+!s85 0
+!s101 -O0
