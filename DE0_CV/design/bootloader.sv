@@ -270,32 +270,24 @@ module bootloader (
 
                 READ_STATE_1: begin
                     flash_cs_tmp <= 1'b0;
+                    sram_we <= ~end_32bit;
+                    
                     if (~wait_bit32) 
                         bit32 <= 5'h0;
                     else 
-                        bit32 <= bit32 + 1'b1;
-                    
-                    if (sram_addr_temp == 'h7ff)        // wrong
-                        sram_we <= 1'b1;
-                    else 
-                        sram_we <= ~end_32bit;
+                        bit32 <= bit32 + 1'b1;                   
                 end
 
                 READ_STATE_2: begin
                     flash_cs_tmp <= 1'b0;
-                    if (end_1K) begin
-                        next_state <= RUN_STATE_0;      //wrong
-                    end
-                    else begin
-                        wait_bit32 <= 1'b1;
-                        bit32 <= bit32 + 1'b1;
-                    end
+                    wait_bit32 <= 1'b1;
+                    bit32 <= bit32 + 1'b1;
                 end
 
                 // Run states - MCU running
                 RUN_STATE_0: begin
                     prog_run <= 1'b1;
-					sram_we <= 1'b0;                    //wrong
+					sram_we <= 1'b1;
                 end
 
                 RUN_STATE_1: begin
