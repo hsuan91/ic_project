@@ -4,14 +4,14 @@ module bootloader (
     // SRAM interface
     output logic [INST_WIDTH-1:0] sram_data,
     output logic [INST_WIDTH-1:0] sram_addr,
-    output logic                  sram_we,
+    output logic                  sram_we,      // active low write enable
 
     // Config data                
     output logic [INST_WIDTH-1:0] config_data,
 
     // Flash interface            
     output logic                  flash_si,     // MOSI
-    output logic                  flash_cs,     // CSN
+    output logic                  flash_cs,     // CS
     input  logic                  flash_so,     // MISO
 
     // Control signals            
@@ -288,6 +288,7 @@ module bootloader (
                 RUN_STATE_0: begin
                     prog_run <= 1'b1;
 					sram_we <= 1'b1;
+                    flash_cs_tmp <= 1'b1;      //instruction read finished
                 end
 
                 RUN_STATE_1: begin
