@@ -1,0 +1,52 @@
+module top(
+    input logic clk,
+    input logic reset
+);
+
+    // flash wires
+    logic flash_si;
+    logic flash_so;
+    logic flash_cs;
+
+    // sram wires
+    logic [INST_WIDTH-1:0] sram_data;
+    logic [INST_WIDTH-1:0] sram_addr;
+    logic                  sram_we;
+
+    // others
+    logic [INST_WIDTH-1:0] config_data;
+    logic prog_run;
+
+    //========================
+    // Bootloader
+    //========================
+    bootloader u_bootloader (
+        .sram_data  (sram_data),
+        .sram_addr  (sram_addr),
+        .sram_we    (sram_we),
+
+        .config_data (config_data),
+
+        .flash_si (flash_si),
+        .flash_cs (flash_cs),
+        .flash_so (flash_so),
+
+        .prog_run (prog_run),
+
+        .clk (clk),
+        .reset (reset)
+    );
+
+    //========================
+    // Flash
+    //========================
+    MX25L1006E u_flash (
+        .SCLK (clk),          // clock
+        .CS   (flash_cs),
+        .SI   (flash_si),
+        .SO   (flash_so),
+        .WP   (1'b1),         // 1:common op
+        .HOLD (1'b1)          // 1:common op
+    );
+
+endmodule
