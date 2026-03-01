@@ -1,8 +1,13 @@
 `include "defines.sv"
 
 module RISC_V(
-	input clk,
-	input rst,
+	input  logic clk,
+	input  logic rst,
+
+	input  logic sram_we,
+	input  logic [31:0] sram_addr,
+    input  logic [31:0] sram_data,
+
 	output logic [31:0] regs_31
 );
 
@@ -58,8 +63,13 @@ always_ff @(posedge clk)
 // Program_Rom
 
 Program_Rom u_Program_Rom(
-	.Rom_addr	(pc),
-	.Rom_data	(inst_)
+	.clk(clk),
+
+	.sram_we(sram_we),
+	.sram_addr (rst ? sram_addr : pc),
+	.sram_data(sram_data),
+
+	.Rom_data	(inst_),
 );
 
 // IF/IDSS

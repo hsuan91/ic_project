@@ -1,6 +1,8 @@
 module top(
     input logic clk,
-    input logic reset
+    input logic rst
+
+    output logic [31:0] regs_31
 );
 
     // flash wires
@@ -34,7 +36,7 @@ module top(
         .prog_run (prog_run),
 
         .clk (clk),
-        .reset (reset)
+        .reset (rst)
     );
 
     //========================
@@ -47,6 +49,20 @@ module top(
         .SO   (flash_so),
         .WP   (1'b1),         // 1:common op
         .HOLD (1'b1)          // 1:common op
+    );
+
+    //========================
+    // RISC-V
+    //========================
+     RISC_V u_risc_v (
+        .clk (clk),
+        .rst (~prog_run),
+        
+        .sram_we (sram_we),
+        .sram_addr (sram_addr),
+        .sram_data (sram_data),
+
+        .regs_31 (regs_31)
     );
 
 endmodule

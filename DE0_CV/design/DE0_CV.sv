@@ -100,7 +100,7 @@ module DE0_CV(
 		assign clk = CLOCK_50;
 	`endif
 	
-	RISC_V u_RISC_V(
+	top u_top(
 		.clk(clk),
 		.rst(~RESET_N),
 		.regs_31(regs_31)
