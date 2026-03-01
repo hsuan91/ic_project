@@ -69,7 +69,7 @@ Program_Rom u_Program_Rom(
 	.sram_addr (rst ? sram_addr : pc),
 	.sram_data(sram_data),
 
-	.Rom_data	(inst_),
+	.Rom_data(inst_)
 );
 
 // IF/IDSS
