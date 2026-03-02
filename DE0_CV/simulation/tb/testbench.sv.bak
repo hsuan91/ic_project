@@ -1,11 +1,34 @@
-`timescale 1ns/100ps
+
 module testbench;
   logic rst;
   logic clk;
+  logic [31:0] regs_31;
+
+  wire flash_so;
+  logic flash_cs;
+  logic flash_si;
   
-  RISC_V u_RISC_V(
+  top u_top(
 	  .rst      (rst      ),
-	  .clk      (clk      )
+	  .clk      (clk      ),
+
+    .flash_so (flash_so ),
+    .flash_si (flash_si ),
+    .flash_cs (flash_cs ),
+    //
+    .regs_31  (regs_31  )
+  );
+
+  //========================
+  // Flash
+  //========================
+  MX25L1006E u_flash (
+      .SCLK (clk),          // clock
+      .CS   (flash_cs),
+      .SI   (flash_si),
+      .SO   (flash_so),
+      .WP   (1'b1),         // 1:common op
+      .HOLD (1'b1)          // 1:common op
   );
   
   initial
@@ -13,7 +36,7 @@ module testbench;
     clk = 0;
     rst = 1;
     #40 rst = 0;
-    #200000 $stop;
+    #20000 $stop;
   end
   
   always #10 clk = ~clk;

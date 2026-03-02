@@ -2,11 +2,34 @@
 module testbench;
   logic rst;
   logic clk;
-  
-  RISC_V u_RISC_V(
+  logic [31:0] regs_31;
+
+  wire flash_so;
+  wire flash_cs;
+  wire flash_si;
+  wire vcc = 1'b1; // ??? wire ?????
+  top u_top(
 	  .rst      (rst      ),
-	  .clk      (clk      )
+	  .clk      (clk      ),
+
+    .flash_so (flash_so ),
+    .flash_si (flash_si ),
+    .flash_cs (flash_cs ),
+    //
+    .regs_31  (regs_31  )
   );
+
+  //========================
+  // Flash
+  //========================
+  MX25L1006E u_flash (
+    .SCLK (clk),
+    .CS   (flash_cs),
+    .SI   (flash_si),
+    .SO   (flash_so),
+    .WP   (vcc),   // ??? wire
+    .HOLD (vcc)    // ??? wire
+);
   
   initial
   begin

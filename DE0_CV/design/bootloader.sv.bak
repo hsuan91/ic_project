@@ -1,4 +1,4 @@
-
+`timescale 1ns/100ps
 
 module bootloader (
     // SRAM interface

@@ -1,0 +1,4 @@
+Warning (10268): Verilog HDL information at MX25L1006E.v(827): always construct contains both blocking and non-blocking assignments File: C:/Users/88691/Desktop/IC_project/MX25L1006E.v Line: 827
+Warning (10268): Verilog HDL information at MX25L1006E.v(857): always construct contains both blocking and non-blocking assignments File: C:/Users/88691/Desktop/IC_project/MX25L1006E.v Line: 857
+Warning (10268): Verilog HDL information at MX25L1006E.v(867): always construct contains both blocking and non-blocking assignments File: C:/Users/88691/Desktop/IC_project/MX25L1006E.v Line: 867
+Warning (10268): Verilog HDL information at MX25L1006E.v(1171): always construct contains both blocking and non-blocking assignments File: C:/Users/88691/Desktop/IC_project/MX25L1006E.v Line: 1171

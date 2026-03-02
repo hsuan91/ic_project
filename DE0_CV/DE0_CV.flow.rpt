@@ -1,5 +1,5 @@
 Flow report for DE0_CV
-Fri Jan 09 23:20:57 2026
+Tue Mar 03 00:32:19 2026
 Quartus Prime Version 19.1.0 Build 670 09/22/2019 SJ Lite Edition
 
 
@@ -41,10 +41,10 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------------------------------------+
 ; Flow Summary                                                              ;
 +-----------------------------+---------------------------------------------+
-; Flow Status                 ; Successful - Fri Jan 09 23:20:57 2026       ;
+; Flow Status                 ; Flow Failed - Tue Mar 03 00:32:19 2026      ;
 ; Quartus Prime Version       ; 19.1.0 Build 670 09/22/2019 SJ Lite Edition ;
 ; Revision Name               ; DE0_CV                                      ;
-; Top-level Entity Name       ; testbench                                   ;
+; Top-level Entity Name       ; top                                         ;
 ; Family                      ; Cyclone V                                   ;
 ; Device                      ; 5CEBA4F23C7                                 ;
 ; Timing Models               ; Final                                       ;
@@ -63,7 +63,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 01/09/2026 23:20:51 ;
+; Start date & time ; 03/03/2026 00:32:10 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; DE0_CV              ;
 +-------------------+---------------------+
@@ -74,17 +74,17 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------+----------------------------------------+---------------+-------------+----------------+
 ; Assignment Name                     ; Value                                  ; Default Value ; Entity Name ; Section Id     ;
 +-------------------------------------+----------------------------------------+---------------+-------------+----------------+
-; COMPILER_SIGNATURE_ID               ; 71205088908386.176797205112032         ; --            ; --          ; --             ;
+; COMPILER_SIGNATURE_ID               ; 168119041648467.177246913003920        ; --            ; --          ; --             ;
 ; EDA_OUTPUT_DATA_FORMAT              ; Systemverilog Hdl                      ; --            ; --          ; eda_simulation ;
 ; EDA_SIMULATION_TOOL                 ; ModelSim-Altera (SystemVerilog)        ; <None>        ; --          ; --             ;
 ; MAX_CORE_JUNCTION_TEMP              ; 85                                     ; --            ; --          ; --             ;
 ; MIN_CORE_JUNCTION_TEMP              ; 0                                      ; --            ; --          ; --             ;
-; PARTITION_COLOR                     ; -- (Not supported for targeted family) ; --            ; testbench   ; Top            ;
-; PARTITION_FITTER_PRESERVATION_LEVEL ; -- (Not supported for targeted family) ; --            ; testbench   ; Top            ;
-; PARTITION_NETLIST_TYPE              ; -- (Not supported for targeted family) ; --            ; testbench   ; Top            ;
+; PARTITION_COLOR                     ; -- (Not supported for targeted family) ; --            ; top         ; Top            ;
+; PARTITION_FITTER_PRESERVATION_LEVEL ; -- (Not supported for targeted family) ; --            ; top         ; Top            ;
+; PARTITION_NETLIST_TYPE              ; -- (Not supported for targeted family) ; --            ; top         ; Top            ;
 ; POWER_BOARD_THERMAL_MODEL           ; None (CONSERVATIVE)                    ; --            ; --          ; --             ;
 ; POWER_PRESET_COOLING_SOLUTION       ; 23 MM HEAT SINK WITH 200 LFPM AIRFLOW  ; --            ; --          ; --             ;
-; TOP_LEVEL_ENTITY                    ; testbench                              ; DE0_CV        ; --          ; --             ;
+; TOP_LEVEL_ENTITY                    ; top                                    ; DE0_CV        ; --          ; --             ;
 +-------------------------------------+----------------------------------------+---------------+-------------+----------------+
 
 
@@ -93,8 +93,8 @@ https://fpgasoftware.intel.com/eula.
 +------------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name            ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Elaboration ; 00:00:06     ; 1.0                     ; 4783 MB             ; 00:00:14                           ;
-; Total                  ; 00:00:06     ; --                      ; --                  ; 00:00:14                           ;
+; Analysis & Elaboration ; 00:00:10     ; 1.0                     ; 4798 MB             ; 00:00:22                           ;
+; Total                  ; 00:00:10     ; --                      ; --                  ; 00:00:22                           ;
 +------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
@@ -103,7 +103,7 @@ https://fpgasoftware.intel.com/eula.
 +------------------------+------------------+------------+------------+----------------+
 ; Module Name            ; Machine Hostname ; OS Name    ; OS Version ; Processor type ;
 +------------------------+------------------+------------+------------+----------------+
-; Analysis & Elaboration ; DESKTOP-1IIGBJP  ; Windows 10 ; 10.0       ; x86_64         ;
+; Analysis & Elaboration ; XPS13            ; Windows 10 ; 10.0       ; x86_64         ;
 +------------------------+------------------+------------+------------+----------------+
 
 
