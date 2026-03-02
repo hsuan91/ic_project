@@ -2,10 +2,13 @@
 module testbench;
   logic rst;
   logic clk;
+  logic [31:0] regs_31;
   
-  RISC_V u_RISC_V(
+  top u_top(
 	  .rst      (rst      ),
-	  .clk      (clk      )
+	  .clk      (clk      ),
+    //
+    .regs_31  (regs_31  )
   );
   
   initial
