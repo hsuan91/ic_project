@@ -4,7 +4,7 @@
 
 # ------------------------------------------------------------
 vlog ../tb/testbench.sv
-vlog ../../design/RISC_V.sv
+vlog ../../design/top.sv
 vlog ../../design/DE0_CV.sv
 
 

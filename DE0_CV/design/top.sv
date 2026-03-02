@@ -1,14 +1,16 @@
 module top(
     input logic clk,
-    input logic rst
+    input logic rst,
+    
+    input logic flash_so,
+
+    output logic flash_cs,
+    output logic flash_si,
 
     output logic [31:0] regs_31
 );
 
-    // flash wires
-    logic flash_si;
-    logic flash_so;
-    logic flash_cs;
+	localparam INST_WIDTH  = 'd32;
 
     // sram wires
     logic [INST_WIDTH-1:0] sram_data;
@@ -39,17 +41,7 @@ module top(
         .reset (rst)
     );
 
-    //========================
-    // Flash
-    //========================
-    MX25L1006E u_flash (
-        .SCLK (clk),          // clock
-        .CS   (flash_cs),
-        .SI   (flash_si),
-        .SO   (flash_so),
-        .WP   (1'b1),         // 1:common op
-        .HOLD (1'b1)          // 1:common op
-    );
+
 
     //========================
     // RISC-V
