@@ -10,293 +10,247 @@ cModel Technology
 Z0 dC:/Users/user/Desktop/ic_project/DE0_CV/simulation/modelsim
 vbootloader
 Z1 DXx6 sv_std 3 std 0 22 AD7iAPLo6nTIKk<N0eo=D3
-!s110 1772722253
+Z2 !s110 1772726249
 !i10b 1
 !s100 SmS]_>FjkjAW>:b<_MIG^3
-InD9X95KXG@`nX^=maK:AA2
-Z2 VDg1SIo80bB@j0V0VzS_@n1
+I]UIRK7m7nHE08KYd2?ea<2
+Z3 VDg1SIo80bB@j0V0VzS_@n1
 !s105 bootloader_sv_unit
 S1
 R0
-Z3 w1772552677
+Z4 w1772552677
 8C:/Users/user/Desktop/ic_project/DE0_CV/design/bootloader.sv
 FC:/Users/user/Desktop/ic_project/DE0_CV/design/bootloader.sv
 L0 3
-Z4 OV;L;10.5b;63
+Z5 OV;L;10.5b;63
 r1
 !s85 0
 31
-Z5 !s108 1772722253.000000
+Z6 !s108 1772726249.000000
 !s107 C:/Users/user/Desktop/ic_project/DE0_CV/design/bootloader.sv|
-!s90 -reportprogress|300|-work|work|C:/Users/user/Desktop/ic_project/DE0_CV/design/bootloader.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/user/Desktop/ic_project/DE0_CV/design|C:/Users/user/Desktop/ic_project/DE0_CV/design/bootloader.sv|
 !i113 1
-Z6 o-work work
-Z7 tCvgOpt 0
-vclock_divider
-R1
-Z8 !s110 1772722254
-!i10b 1
-!s100 n><?eRfbl?d`Gl59ja5zI1
-IlTP5]J01ki[<oD]H^I7S83
-R2
-!s105 clock_divider_sv_unit
-S1
-R0
-w1767974636
-8C:/Users/user/Desktop/ic_project/DE0_CV/design/clock_divider.sv
-FC:/Users/user/Desktop/ic_project/DE0_CV/design/clock_divider.sv
-L0 2
-R4
-r1
-!s85 0
-31
-R5
-!s107 C:/Users/user/Desktop/ic_project/DE0_CV/design/clock_divider.sv|
-!s90 -reportprogress|30|-work|work|C:/Users/user/Desktop/ic_project/DE0_CV/design/clock_divider.sv|
-!i113 1
-R6
-R7
+Z7 o-sv -work work
+Z8 !s92 -sv -work work +incdir+C:/Users/user/Desktop/ic_project/DE0_CV/design
+Z9 tCvgOpt 0
 vDE0_CV
 R1
-R8
+Z10 !s110 1772726256
 !i10b 1
 !s100 RQ2<PIRBS5YO:;6YHEDTf3
-ISnYdgl[1iT6>dU6E2[14J1
-R2
+Ik@fcL1d6a>ULXbNS1JB[z3
+R3
 !s105 DE0_CV_sv_unit
 S1
 R0
-Z9 w1772460953
-8C:/Users/user/Desktop/ic_project/DE0_CV/design/DE0_CV.sv
-FC:/Users/user/Desktop/ic_project/DE0_CV/design/DE0_CV.sv
+Z11 w1772460953
+8../../design/DE0_CV.sv
+F../../design/DE0_CV.sv
 L0 6
-R4
+R5
 r1
 !s85 0
 31
-Z10 !s108 1772722254.000000
-!s107 C:/Users/user/Desktop/ic_project/DE0_CV/design/DE0_CV.sv|
-!s90 -reportprogress|30|-work|work|C:/Users/user/Desktop/ic_project/DE0_CV/design/DE0_CV.sv|
+Z12 !s108 1772726256.000000
+!s107 ../../design/DE0_CV.sv|
+!s90 -reportprogress|300|../../design/DE0_CV.sv|
 !i113 1
-R6
-R7
+R9
 n@d@e0_@c@v
 vLSU
 R1
-R8
+R2
 !i10b 1
 !s100 h@RbCLhdK_[@W05E]17DE2
-I7KMe=hLT^;2?FoKl@zKc@2
-R2
-Z11 !s105 LSU_sv_unit
+I?D;maz:M]3HgVUORbL^ck1
+R3
+Z13 !s105 LSU_sv_unit
 S1
 R0
-R9
-Z12 8C:/Users/user/Desktop/ic_project/DE0_CV/design/LSU.sv
-Z13 FC:/Users/user/Desktop/ic_project/DE0_CV/design/LSU.sv
+R11
+Z14 8C:/Users/user/Desktop/ic_project/DE0_CV/design/LSU.sv
+Z15 FC:/Users/user/Desktop/ic_project/DE0_CV/design/LSU.sv
 L0 3
-R4
+R5
 r1
 !s85 0
 31
-R10
-Z14 !s107 C:\Users\user\Desktop\ic_project\DE0_CV\design\defines.sv|C:/Users/user/Desktop/ic_project/DE0_CV/design/LSU.sv|
-Z15 !s90 -reportprogress|30|-work|work|C:/Users/user/Desktop/ic_project/DE0_CV/design/LSU.sv|
-!i113 1
 R6
+Z16 !s107 C:/Users/user/Desktop/ic_project/DE0_CV/design/defines.sv|C:/Users/user/Desktop/ic_project/DE0_CV/design/LSU.sv|
+Z17 !s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/user/Desktop/ic_project/DE0_CV/design|C:/Users/user/Desktop/ic_project/DE0_CV/design/LSU.sv|
+!i113 1
 R7
+R8
+R9
 n@l@s@u
 vMX25L1006E
-R8
+R10
 !i10b 1
-!s100 m;c0GjidQo_8d0cNBcEI`3
-If9dh_mhPBDW;d8l_I@`_m1
-R2
-R0
+!s100 BAFNK@PJmOnZ:^Qm@YLRP2
+IXDHSHH>C`0SMUW1UkfAaS0
 R3
-8C:/Users/user/Desktop/ic_project/DE0_CV/design/MX25L1006E.v
-FC:/Users/user/Desktop/ic_project/DE0_CV/design/MX25L1006E.v
+R0
+w1772722831
+8../../design/MX25L1006E.v
+F../../design/MX25L1006E.v
 L0 46
-R4
+R5
 r1
 !s85 0
 31
-R10
-!s107 C:/Users/user/Desktop/ic_project/DE0_CV/design/MX25L1006E.v|
-!s90 -reportprogress|30|-work|work|C:/Users/user/Desktop/ic_project/DE0_CV/design/MX25L1006E.v|
+R12
+!s107 ../../design/MX25L1006E.v|
+!s90 -reportprogress|300|../../design/MX25L1006E.v|
 !i113 1
-R6
-R7
+R9
 n@m@x25@l1006@e
 vProgram_Rom
 R1
-R8
+R2
 !i10b 1
 !s100 i8kP=0=DO7JoE`WjMhNkf0
-Io3lO:8ob;_h]0KNFPcVW83
-R2
+Ib2F]k`Eb3WWR:Wi]NKZS[2
+R3
 !s105 Program_Rom_sv_unit
 S1
 R0
-R9
+R11
 8C:/Users/user/Desktop/ic_project/DE0_CV/design/Program_Rom.sv
 FC:/Users/user/Desktop/ic_project/DE0_CV/design/Program_Rom.sv
 L0 1
-R4
+R5
 r1
 !s85 0
 31
-R10
-!s107 C:/Users/user/Desktop/ic_project/DE0_CV/design/Program_Rom.sv|
-!s90 -reportprogress|30|-work|work|C:/Users/user/Desktop/ic_project/DE0_CV/design/Program_Rom.sv|
-!i113 1
 R6
+!s107 C:/Users/user/Desktop/ic_project/DE0_CV/design/Program_Rom.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/user/Desktop/ic_project/DE0_CV/design|C:/Users/user/Desktop/ic_project/DE0_CV/design/Program_Rom.sv|
+!i113 1
 R7
+R8
+R9
 n@program_@rom
 vRAM
 R1
-R8
+R2
 !i10b 1
 !s100 n[?>Q7jikWIh9hG3mUidY0
-IHEePjdTD`gRXXb1FW^eY=2
-R2
-R11
+I9lEHFf1[C^J0R;a::d]f21
+R3
+R13
 S1
 R0
-R9
-R12
-R13
+R11
+R14
+R15
 L0 221
-R4
+R5
 r1
 !s85 0
 31
-R10
-R14
-R15
-!i113 1
 R6
+R16
+R17
+!i113 1
 R7
+R8
+R9
 n@r@a@m
 vReg_file
 R1
-R8
+R2
 !i10b 1
 !s100 5H0WI3bC=Fe<eShk26dl;2
-I72m[DI=1YKgVn]HH=PEXU1
-R2
+IfR_aORgiL;k68H`0gV8c@1
+R3
 !s105 Reg_file_sv_unit
 S1
 R0
-R9
+R11
 8C:/Users/user/Desktop/ic_project/DE0_CV/design/Reg_file.sv
 FC:/Users/user/Desktop/ic_project/DE0_CV/design/Reg_file.sv
 L0 2
-R4
+R5
 r1
 !s85 0
 31
-R10
-!s107 C:/Users/user/Desktop/ic_project/DE0_CV/design/Reg_file.sv|
-!s90 -reportprogress|30|-work|work|C:/Users/user/Desktop/ic_project/DE0_CV/design/Reg_file.sv|
-!i113 1
 R6
+!s107 C:/Users/user/Desktop/ic_project/DE0_CV/design/Reg_file.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/user/Desktop/ic_project/DE0_CV/design|C:/Users/user/Desktop/ic_project/DE0_CV/design/Reg_file.sv|
+!i113 1
 R7
+R8
+R9
 n@reg_file
 vRISC_V
 R1
-R8
+R2
 !i10b 1
 !s100 KUKU<^jlJRnV1Me6IXOb@2
-ICjQ2H@f=6Wfb>Df=@I7=[0
-R2
+Il0T8fi_j;<8Lj8:5N3^VA2
+R3
 !s105 RISC_V_sv_unit
 S1
 R0
-R9
+R11
 8C:/Users/user/Desktop/ic_project/DE0_CV/design/RISC_V.sv
 FC:/Users/user/Desktop/ic_project/DE0_CV/design/RISC_V.sv
 L0 3
-R4
+R5
 r1
 !s85 0
 31
-R10
-!s107 C:\Users\user\Desktop\ic_project\DE0_CV\design\defines.sv|C:/Users/user/Desktop/ic_project/DE0_CV/design/RISC_V.sv|
-!s90 -reportprogress|30|-work|work|C:/Users/user/Desktop/ic_project/DE0_CV/design/RISC_V.sv|
-!i113 1
 R6
+!s107 C:/Users/user/Desktop/ic_project/DE0_CV/design/defines.sv|C:/Users/user/Desktop/ic_project/DE0_CV/design/RISC_V.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/user/Desktop/ic_project/DE0_CV/design|C:/Users/user/Desktop/ic_project/DE0_CV/design/RISC_V.sv|
+!i113 1
 R7
-n@r@i@s@c_@v
-vseven_segment_display
-R1
 R8
-!i10b 1
-!s100 7]n8;Z3RYk?70HDL7z>3J0
-ILNGSW07QMb`Y8E913DOD42
-R2
-!s105 seven_segment_display_sv_unit
-S1
-R0
-w1767971481
-8C:/Users/user/Desktop/ic_project/DE0_CV/design/seven_segment_display.sv
-FC:/Users/user/Desktop/ic_project/DE0_CV/design/seven_segment_display.sv
-L0 2
-R4
-r1
-!s85 0
-31
-R10
-!s107 C:/Users/user/Desktop/ic_project/DE0_CV/design/seven_segment_display.sv|
-!s90 -reportprogress|30|-work|work|C:/Users/user/Desktop/ic_project/DE0_CV/design/seven_segment_display.sv|
-!i113 1
-R6
-R7
+R9
+n@r@i@s@c_@v
 vtestbench
 R1
-!s110 1772722243
+R10
 !i10b 1
-!s100 W`L49Wmf7@MYSScgTTL7o1
-Ij5`D]VK?PngbB=T7oLmb;3
-R2
+!s100 GhG>jg3IS9fSNJ1@9B^YD2
+I31nDDC[e6P1Km?[gV8SRW1
+R3
 !s105 testbench_sv_unit
 S1
 R0
-w1772720942
-8C:/Users/user/Desktop/ic_project/DE0_CV/simulation/tb/testbench.sv
-FC:/Users/user/Desktop/ic_project/DE0_CV/simulation/tb/testbench.sv
+w1772726130
+8../tb/testbench.sv
+F../tb/testbench.sv
 L0 2
-R4
+R5
 r1
 !s85 0
 31
-!s108 1772722243.000000
-!s107 C:/Users/user/Desktop/ic_project/DE0_CV/simulation/tb/testbench.sv|
-!s90 -reportprogress|300|-work|work|C:/Users/user/Desktop/ic_project/DE0_CV/simulation/tb/testbench.sv|
+R12
+!s107 ../tb/testbench.sv|
+!s90 -reportprogress|300|../tb/testbench.sv|
 !i113 1
-R6
-R7
+R9
 vtop
 R1
-R8
+R10
 !i10b 1
 !s100 =c@JR;^1BSjHo=CIHc^DH3
-I8F2^Wkd2W2gL@`F?RG`=50
-R2
+IFn`1;i_L7B6ge=TKKT6ZS1
+R3
 !s105 top_sv_unit
 S1
 R0
-R3
-8C:/Users/user/Desktop/ic_project/DE0_CV/design/top.sv
-FC:/Users/user/Desktop/ic_project/DE0_CV/design/top.sv
-L0 1
 R4
+8../../design/top.sv
+F../../design/top.sv
+L0 1
+R5
 r1
 !s85 0
 31
-R10
-!s107 C:/Users/user/Desktop/ic_project/DE0_CV/design/top.sv|
-!s90 -reportprogress|30|-work|work|C:/Users/user/Desktop/ic_project/DE0_CV/design/top.sv|
+R12
+!s107 ../../design/top.sv|
+!s90 -reportprogress|300|../../design/top.sv|
 !i113 1
-R6
-R7
+R9
