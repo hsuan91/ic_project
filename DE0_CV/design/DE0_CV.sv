@@ -92,7 +92,7 @@ module DE0_CV(
 			.rst      (~RESET_N),
 			.DIVISOR  (1_000_000),
 			//
-			.clk_out  (clk_div   ),
+			.clk_out  (clk_div   )
 		);
 		
 		assign clk = clk_div;
@@ -103,6 +103,11 @@ module DE0_CV(
 	top u_top(
 		.clk(clk),
 		.rst(~RESET_N),
+		
+		.flash_so(GPIO_0[0]),
+		.flash_cs(GPIO_0[1]),
+		.flash_si(GPIO_0[2]),
+		
 		.regs_31(regs_31)
 	);
 	

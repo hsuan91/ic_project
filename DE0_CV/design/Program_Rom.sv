@@ -10,15 +10,15 @@ module Program_Rom (
     output logic [31:0] Rom_data
 );
 
-    logic [31:0] mem [0:1023];
+    logic [31:0] mem [0:255];   //1KB
 
     // 當 sram_we 為 0 時，將 bootloader 傳來的資料寫入記憶體
     always_ff @(posedge clk) begin
         if (sram_we == 1'b0) begin
-            mem[sram_addr[11:2]] <= sram_data;
+            mem[sram_addr[9:2]] <= sram_data;
         end
     end
 
-    assign Rom_data = mem[sram_addr[11:2]];
+    assign Rom_data = mem[sram_addr[9:2]];
  
 endmodule
