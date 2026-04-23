@@ -1,301 +1,4 @@
-|top
-clk => clk.IN2
-rst => rst.IN1
-flash_so => flash_so.IN1
-flash_cs << bootloader:u_bootloader.flash_cs
-flash_si << bootloader:u_bootloader.flash_si
-regs_31[0] << RISC_V:u_risc_v.regs_31
-regs_31[1] << RISC_V:u_risc_v.regs_31
-regs_31[2] << RISC_V:u_risc_v.regs_31
-regs_31[3] << RISC_V:u_risc_v.regs_31
-regs_31[4] << RISC_V:u_risc_v.regs_31
-regs_31[5] << RISC_V:u_risc_v.regs_31
-regs_31[6] << RISC_V:u_risc_v.regs_31
-regs_31[7] << RISC_V:u_risc_v.regs_31
-regs_31[8] << RISC_V:u_risc_v.regs_31
-regs_31[9] << RISC_V:u_risc_v.regs_31
-regs_31[10] << RISC_V:u_risc_v.regs_31
-regs_31[11] << RISC_V:u_risc_v.regs_31
-regs_31[12] << RISC_V:u_risc_v.regs_31
-regs_31[13] << RISC_V:u_risc_v.regs_31
-regs_31[14] << RISC_V:u_risc_v.regs_31
-regs_31[15] << RISC_V:u_risc_v.regs_31
-regs_31[16] << RISC_V:u_risc_v.regs_31
-regs_31[17] << RISC_V:u_risc_v.regs_31
-regs_31[18] << RISC_V:u_risc_v.regs_31
-regs_31[19] << RISC_V:u_risc_v.regs_31
-regs_31[20] << RISC_V:u_risc_v.regs_31
-regs_31[21] << RISC_V:u_risc_v.regs_31
-regs_31[22] << RISC_V:u_risc_v.regs_31
-regs_31[23] << RISC_V:u_risc_v.regs_31
-regs_31[24] << RISC_V:u_risc_v.regs_31
-regs_31[25] << RISC_V:u_risc_v.regs_31
-regs_31[26] << RISC_V:u_risc_v.regs_31
-regs_31[27] << RISC_V:u_risc_v.regs_31
-regs_31[28] << RISC_V:u_risc_v.regs_31
-regs_31[29] << RISC_V:u_risc_v.regs_31
-regs_31[30] << RISC_V:u_risc_v.regs_31
-regs_31[31] << RISC_V:u_risc_v.regs_31
-
-
-|top|bootloader:u_bootloader
-sram_data[0] <= sram_data[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-sram_data[1] <= sram_data[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-sram_data[2] <= sram_data[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-sram_data[3] <= sram_data[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-sram_data[4] <= sram_data[4]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-sram_data[5] <= sram_data[5]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-sram_data[6] <= sram_data[6]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-sram_data[7] <= sram_data[7]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-sram_data[8] <= sram_data[8]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-sram_data[9] <= sram_data[9]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-sram_data[10] <= sram_data[10]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-sram_data[11] <= sram_data[11]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-sram_data[12] <= sram_data[12]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-sram_data[13] <= sram_data[13]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-sram_data[14] <= sram_data[14]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-sram_data[15] <= sram_data[15]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-sram_data[16] <= sram_data[16]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-sram_data[17] <= sram_data[17]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-sram_data[18] <= sram_data[18]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-sram_data[19] <= sram_data[19]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-sram_data[20] <= sram_data[20]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-sram_data[21] <= sram_data[21]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-sram_data[22] <= sram_data[22]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-sram_data[23] <= sram_data[23]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-sram_data[24] <= sram_data[24]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-sram_data[25] <= sram_data[25]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-sram_data[26] <= sram_data[26]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-sram_data[27] <= sram_data[27]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-sram_data[28] <= sram_data[28]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-sram_data[29] <= sram_data[29]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-sram_data[30] <= sram_data[30]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-sram_data[31] <= sram_data[31]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-sram_addr[0] <= Add0.DB_MAX_OUTPUT_PORT_TYPE
-sram_addr[1] <= Add0.DB_MAX_OUTPUT_PORT_TYPE
-sram_addr[2] <= Add0.DB_MAX_OUTPUT_PORT_TYPE
-sram_addr[3] <= Add0.DB_MAX_OUTPUT_PORT_TYPE
-sram_addr[4] <= Add0.DB_MAX_OUTPUT_PORT_TYPE
-sram_addr[5] <= Add0.DB_MAX_OUTPUT_PORT_TYPE
-sram_addr[6] <= Add0.DB_MAX_OUTPUT_PORT_TYPE
-sram_addr[7] <= Add0.DB_MAX_OUTPUT_PORT_TYPE
-sram_addr[8] <= Add0.DB_MAX_OUTPUT_PORT_TYPE
-sram_addr[9] <= Add0.DB_MAX_OUTPUT_PORT_TYPE
-sram_addr[10] <= Add0.DB_MAX_OUTPUT_PORT_TYPE
-sram_addr[11] <= Add0.DB_MAX_OUTPUT_PORT_TYPE
-sram_addr[12] <= Add0.DB_MAX_OUTPUT_PORT_TYPE
-sram_addr[13] <= Add0.DB_MAX_OUTPUT_PORT_TYPE
-sram_addr[14] <= Add0.DB_MAX_OUTPUT_PORT_TYPE
-sram_addr[15] <= Add0.DB_MAX_OUTPUT_PORT_TYPE
-sram_addr[16] <= Add0.DB_MAX_OUTPUT_PORT_TYPE
-sram_addr[17] <= Add0.DB_MAX_OUTPUT_PORT_TYPE
-sram_addr[18] <= Add0.DB_MAX_OUTPUT_PORT_TYPE
-sram_addr[19] <= Add0.DB_MAX_OUTPUT_PORT_TYPE
-sram_addr[20] <= Add0.DB_MAX_OUTPUT_PORT_TYPE
-sram_addr[21] <= Add0.DB_MAX_OUTPUT_PORT_TYPE
-sram_addr[22] <= Add0.DB_MAX_OUTPUT_PORT_TYPE
-sram_addr[23] <= Add0.DB_MAX_OUTPUT_PORT_TYPE
-sram_addr[24] <= Add0.DB_MAX_OUTPUT_PORT_TYPE
-sram_addr[25] <= Add0.DB_MAX_OUTPUT_PORT_TYPE
-sram_addr[26] <= Add0.DB_MAX_OUTPUT_PORT_TYPE
-sram_addr[27] <= Add0.DB_MAX_OUTPUT_PORT_TYPE
-sram_addr[28] <= Add0.DB_MAX_OUTPUT_PORT_TYPE
-sram_addr[29] <= Add0.DB_MAX_OUTPUT_PORT_TYPE
-sram_addr[30] <= Add0.DB_MAX_OUTPUT_PORT_TYPE
-sram_addr[31] <= Add0.DB_MAX_OUTPUT_PORT_TYPE
-sram_we <= sram_we~reg0.DB_MAX_OUTPUT_PORT_TYPE
-config_data[0] <= config_data[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-config_data[1] <= config_data[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-config_data[2] <= config_data[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-config_data[3] <= config_data[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-config_data[4] <= config_data[4]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-config_data[5] <= config_data[5]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-config_data[6] <= config_data[6]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-config_data[7] <= config_data[7]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-config_data[8] <= config_data[8]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-config_data[9] <= config_data[9]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-config_data[10] <= config_data[10]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-config_data[11] <= config_data[11]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-config_data[12] <= config_data[12]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-config_data[13] <= config_data[13]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-config_data[14] <= config_data[14]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-config_data[15] <= config_data[15]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-config_data[16] <= config_data[16]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-config_data[17] <= config_data[17]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-config_data[18] <= config_data[18]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-config_data[19] <= config_data[19]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-config_data[20] <= config_data[20]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-config_data[21] <= config_data[21]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-config_data[22] <= config_data[22]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-config_data[23] <= config_data[23]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-config_data[24] <= config_data[24]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-config_data[25] <= config_data[25]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-config_data[26] <= config_data[26]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-config_data[27] <= config_data[27]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-config_data[28] <= config_data[28]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-config_data[29] <= config_data[29]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-config_data[30] <= config_data[30]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-config_data[31] <= config_data[31]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-flash_si <= flash_si~reg0.DB_MAX_OUTPUT_PORT_TYPE
-flash_cs <= flash_cs~reg0.DB_MAX_OUTPUT_PORT_TYPE
-flash_so => data_temp[0].DATAIN
-prog_run <= prog_run~reg0.DB_MAX_OUTPUT_PORT_TYPE
-clk => bit32[0].CLK
-clk => bit32[1].CLK
-clk => bit32[2].CLK
-clk => bit32[3].CLK
-clk => bit32[4].CLK
-clk => wait_bit32.CLK
-clk => flash_si_tmp.CLK
-clk => flash_cs_tmp.CLK
-clk => sram_we~reg0.CLK
-clk => prog_run~reg0.CLK
-clk => data_temp[0].CLK
-clk => data_temp[1].CLK
-clk => data_temp[2].CLK
-clk => data_temp[3].CLK
-clk => data_temp[4].CLK
-clk => data_temp[5].CLK
-clk => data_temp[6].CLK
-clk => data_temp[7].CLK
-clk => data_temp[8].CLK
-clk => data_temp[9].CLK
-clk => data_temp[10].CLK
-clk => data_temp[11].CLK
-clk => data_temp[12].CLK
-clk => data_temp[13].CLK
-clk => data_temp[14].CLK
-clk => data_temp[15].CLK
-clk => data_temp[16].CLK
-clk => data_temp[17].CLK
-clk => data_temp[18].CLK
-clk => data_temp[19].CLK
-clk => data_temp[20].CLK
-clk => data_temp[21].CLK
-clk => data_temp[22].CLK
-clk => data_temp[23].CLK
-clk => data_temp[24].CLK
-clk => data_temp[25].CLK
-clk => data_temp[26].CLK
-clk => data_temp[27].CLK
-clk => data_temp[28].CLK
-clk => data_temp[29].CLK
-clk => data_temp[30].CLK
-clk => data_temp[31].CLK
-clk => config_data[0]~reg0.CLK
-clk => config_data[1]~reg0.CLK
-clk => config_data[2]~reg0.CLK
-clk => config_data[3]~reg0.CLK
-clk => config_data[4]~reg0.CLK
-clk => config_data[5]~reg0.CLK
-clk => config_data[6]~reg0.CLK
-clk => config_data[7]~reg0.CLK
-clk => config_data[8]~reg0.CLK
-clk => config_data[9]~reg0.CLK
-clk => config_data[10]~reg0.CLK
-clk => config_data[11]~reg0.CLK
-clk => config_data[12]~reg0.CLK
-clk => config_data[13]~reg0.CLK
-clk => config_data[14]~reg0.CLK
-clk => config_data[15]~reg0.CLK
-clk => config_data[16]~reg0.CLK
-clk => config_data[17]~reg0.CLK
-clk => config_data[18]~reg0.CLK
-clk => config_data[19]~reg0.CLK
-clk => config_data[20]~reg0.CLK
-clk => config_data[21]~reg0.CLK
-clk => config_data[22]~reg0.CLK
-clk => config_data[23]~reg0.CLK
-clk => config_data[24]~reg0.CLK
-clk => config_data[25]~reg0.CLK
-clk => config_data[26]~reg0.CLK
-clk => config_data[27]~reg0.CLK
-clk => config_data[28]~reg0.CLK
-clk => config_data[29]~reg0.CLK
-clk => config_data[30]~reg0.CLK
-clk => config_data[31]~reg0.CLK
-clk => config_flag.CLK
-clk => sram_data[0]~reg0.CLK
-clk => sram_data[1]~reg0.CLK
-clk => sram_data[2]~reg0.CLK
-clk => sram_data[3]~reg0.CLK
-clk => sram_data[4]~reg0.CLK
-clk => sram_data[5]~reg0.CLK
-clk => sram_data[6]~reg0.CLK
-clk => sram_data[7]~reg0.CLK
-clk => sram_data[8]~reg0.CLK
-clk => sram_data[9]~reg0.CLK
-clk => sram_data[10]~reg0.CLK
-clk => sram_data[11]~reg0.CLK
-clk => sram_data[12]~reg0.CLK
-clk => sram_data[13]~reg0.CLK
-clk => sram_data[14]~reg0.CLK
-clk => sram_data[15]~reg0.CLK
-clk => sram_data[16]~reg0.CLK
-clk => sram_data[17]~reg0.CLK
-clk => sram_data[18]~reg0.CLK
-clk => sram_data[19]~reg0.CLK
-clk => sram_data[20]~reg0.CLK
-clk => sram_data[21]~reg0.CLK
-clk => sram_data[22]~reg0.CLK
-clk => sram_data[23]~reg0.CLK
-clk => sram_data[24]~reg0.CLK
-clk => sram_data[25]~reg0.CLK
-clk => sram_data[26]~reg0.CLK
-clk => sram_data[27]~reg0.CLK
-clk => sram_data[28]~reg0.CLK
-clk => sram_data[29]~reg0.CLK
-clk => sram_data[30]~reg0.CLK
-clk => sram_data[31]~reg0.CLK
-clk => sram_addr_temp[0].CLK
-clk => sram_addr_temp[1].CLK
-clk => sram_addr_temp[2].CLK
-clk => sram_addr_temp[3].CLK
-clk => sram_addr_temp[4].CLK
-clk => sram_addr_temp[5].CLK
-clk => sram_addr_temp[6].CLK
-clk => sram_addr_temp[7].CLK
-clk => sram_addr_temp[8].CLK
-clk => sram_addr_temp[9].CLK
-clk => sram_addr_temp[10].CLK
-clk => sram_addr_temp[11].CLK
-clk => sram_addr_temp[12].CLK
-clk => sram_addr_temp[13].CLK
-clk => sram_addr_temp[14].CLK
-clk => sram_addr_temp[15].CLK
-clk => sram_addr_temp[16].CLK
-clk => sram_addr_temp[17].CLK
-clk => sram_addr_temp[18].CLK
-clk => sram_addr_temp[19].CLK
-clk => sram_addr_temp[20].CLK
-clk => sram_addr_temp[21].CLK
-clk => sram_addr_temp[22].CLK
-clk => sram_addr_temp[23].CLK
-clk => sram_addr_temp[24].CLK
-clk => sram_addr_temp[25].CLK
-clk => sram_addr_temp[26].CLK
-clk => sram_addr_temp[27].CLK
-clk => sram_addr_temp[28].CLK
-clk => sram_addr_temp[29].CLK
-clk => sram_addr_temp[30].CLK
-clk => sram_addr_temp[31].CLK
-clk => flash_si~reg0.CLK
-clk => flash_cs~reg0.CLK
-clk => present_state~1.DATAIN
-reset => bit32[0].ACLR
-reset => bit32[1].ACLR
-reset => bit32[2].ACLR
-reset => bit32[3].ACLR
-reset => bit32[4].ACLR
-reset => wait_bit32.ACLR
-reset => flash_si_tmp.ACLR
-reset => flash_cs_tmp.PRESET
-reset => sram_we~reg0.PRESET
-reset => prog_run~reg0.ACLR
-reset => present_state~3.DATAIN
-
-
-|top|RISC_V:u_risc_v
+|RISC_V
 clk => clk.IN3
 rst => rst.IN1
 sram_we => sram_we.IN1
@@ -397,10 +100,8 @@ regs_31[30] <= Reg_file:u_Reg_file.regs_31
 regs_31[31] <= Reg_file:u_Reg_file.regs_31
 
 
-|top|RISC_V:u_risc_v|Program_Rom:u_Program_Rom
+|RISC_V|Program_Rom:u_Program_Rom
 clk => mem.we_a.CLK
-clk => mem.waddr_a[9].CLK
-clk => mem.waddr_a[8].CLK
 clk => mem.waddr_a[7].CLK
 clk => mem.waddr_a[6].CLK
 clk => mem.waddr_a[5].CLK
@@ -470,12 +171,8 @@ sram_addr[8] => mem.RADDR6
 sram_addr[9] => mem.waddr_a[7].DATAIN
 sram_addr[9] => mem.WADDR7
 sram_addr[9] => mem.RADDR7
-sram_addr[10] => mem.waddr_a[8].DATAIN
-sram_addr[10] => mem.WADDR8
-sram_addr[10] => mem.RADDR8
-sram_addr[11] => mem.waddr_a[9].DATAIN
-sram_addr[11] => mem.WADDR9
-sram_addr[11] => mem.RADDR9
+sram_addr[10] => ~NO_FANOUT~
+sram_addr[11] => ~NO_FANOUT~
 sram_addr[12] => ~NO_FANOUT~
 sram_addr[13] => ~NO_FANOUT~
 sram_addr[14] => ~NO_FANOUT~
@@ -594,7 +291,7 @@ Rom_data[30] <= mem.DATAOUT30
 Rom_data[31] <= mem.DATAOUT31
 
 
-|top|RISC_V:u_risc_v|Reg_file:u_Reg_file
+|RISC_V|Reg_file:u_Reg_file
 clk => regs[31][0].CLK
 clk => regs[31][1].CLK
 clk => regs[31][2].CLK
@@ -4096,7 +3793,7 @@ regs_31[30] <= regs[31][30].DB_MAX_OUTPUT_PORT_TYPE
 regs_31[31] <= regs[31][31].DB_MAX_OUTPUT_PORT_TYPE
 
 
-|top|RISC_V:u_risc_v|LSU:LSU_1
+|RISC_V|LSU:LSU_1
 clk => clk.IN4
 write_ram => write_ram_0.IN1
 write_ram => write_ram_1.IN1
@@ -4548,7 +4245,7 @@ read_data[30] <= Mux69.DB_MAX_OUTPUT_PORT_TYPE
 read_data[31] <= Mux68.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|top|RISC_V:u_risc_v|LSU:LSU_1|RAM:ram_0
+|RISC_V|LSU:LSU_1|RAM:ram_0
 clk => ram.we_a.CLK
 clk => ram.waddr_a[6].CLK
 clk => ram.waddr_a[5].CLK
@@ -4638,7 +4335,7 @@ read_data[6] <= ram.DATAOUT6
 read_data[7] <= ram.DATAOUT7
 
 
-|top|RISC_V:u_risc_v|LSU:LSU_1|RAM:ram_1
+|RISC_V|LSU:LSU_1|RAM:ram_1
 clk => ram.we_a.CLK
 clk => ram.waddr_a[6].CLK
 clk => ram.waddr_a[5].CLK
@@ -4728,7 +4425,7 @@ read_data[6] <= ram.DATAOUT6
 read_data[7] <= ram.DATAOUT7
 
 
-|top|RISC_V:u_risc_v|LSU:LSU_1|RAM:ram_2
+|RISC_V|LSU:LSU_1|RAM:ram_2
 clk => ram.we_a.CLK
 clk => ram.waddr_a[6].CLK
 clk => ram.waddr_a[5].CLK
@@ -4818,7 +4515,7 @@ read_data[6] <= ram.DATAOUT6
 read_data[7] <= ram.DATAOUT7
 
 
-|top|RISC_V:u_risc_v|LSU:LSU_1|RAM:ram_3
+|RISC_V|LSU:LSU_1|RAM:ram_3
 clk => ram.we_a.CLK
 clk => ram.waddr_a[6].CLK
 clk => ram.waddr_a[5].CLK
