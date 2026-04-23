@@ -57,7 +57,7 @@ logic [31:0]rs1_value_r_,rs2_value_r_;
 logic [31:0]rs2_value_r_r;  
 logic [1:0]set_rd_value_rr;
 logic write_ram_rr;
-logic funct3_rr;
+logic [2:0]funct3_rr;
 logic [31:0]ram_addr;
 logic [31:0]ram_addr_r;
 logic [31:0]alu_out_r;
@@ -533,12 +533,12 @@ assign j_addr_			= base_addr_ + imm_r;
 assign jump_addr_ 	= {j_addr_[31:1], (j_addr_[0] & sel_jump_r)};
 
 //forwarding unit (4->2)
-assign sel_rs1_value_ 	= write_regf_en_rr & (addr_rd_rr == addr_rs1_);
-assign sel_rs2_value_ 	= write_regf_en_rr & (addr_rd_rr == addr_rs2_);
+assign sel_rs1_value_ 	= write_regf_en_rr & (addr_rd_rr != 5'b0) & (addr_rd_rr == addr_rs1_);
+assign sel_rs2_value_ 	= write_regf_en_rr & (addr_rd_rr != 5'b0) & (addr_rd_rr == addr_rs2_);
 
 //forwarding unit (4->3)
-assign sel_rs1_value_r_      = write_regf_en_r & (addr_rd_r == addr_rs1_);
-assign sel_rs2_value_r_      = write_regf_en_r & (addr_rd_r == addr_rs2_);
+assign sel_rs1_value_r_      = write_regf_en_r & (addr_rd_rr != 5'b0) & (addr_rd_r == addr_rs1_);
+assign sel_rs2_value_r_      = write_regf_en_r & (addr_rd_rr != 5'b0) & (addr_rd_r == addr_rs2_);
 
 
 
