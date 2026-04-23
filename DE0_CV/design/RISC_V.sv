@@ -54,7 +54,7 @@ logic sel_rs1_value_r_,sel_rs2_value_r_;
 logic sel_rs1_value_r_r,sel_rs2_value_r_r;
 logic sel_B_type_,sel_B_type_r;
 logic [31:0]rs1_value_r_,rs2_value_r_;
-logic [31:0]alu_rs2_r;
+logic [31:0]rs2_value_r_r;  
 logic [1:0]set_rd_value_rr;
 logic write_ram_rr;
 logic funct3_rr;
@@ -491,7 +491,7 @@ LSU LSU_1(
 	.clk(clk),
 	.write_ram(write_ram_rr),
 	.funct3(funct3_rr),
-	.write_data(alu_rs2_r),
+	.write_data(rs2_value_r_r),
 	.ram_addr(ram_addr_r),
 
 	.read_data(read_data)
@@ -597,7 +597,7 @@ always_ff @(posedge clk) begin
 	if(rst || flush_EXWB_r) begin
 		write_regf_en_rr      <= 0;
 		addr_rd_rr            <= 0;
-		alu_rs2_r             <= 0;
+		rs2_value_r_r             <= 0;
 		write_ram_rr          <= 0;
 		funct3_rr             <= 0;
 		ram_addr_r				 <= 0;
@@ -609,7 +609,7 @@ always_ff @(posedge clk) begin
 	else begin
 		write_regf_en_rr      <= write_regf_en_r;
 		addr_rd_rr            <= addr_rd_r;
-		alu_rs2_r             <= rs2_value_r_;
+		rs2_value_r_r             <= rs2_value_r_;
 		write_ram_rr          <= write_ram_r;
 		funct3_rr             <= funct3_r;
 		ram_addr_r            <= ram_addr;
