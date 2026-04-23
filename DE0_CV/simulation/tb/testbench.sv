@@ -25,7 +25,6 @@ module testbench;
 
 
 MX25L1006E #(
-      // 注意：這裡已經幫你把 Windows 的 "\" 換成了 "/"
       .Init_File("../../asm2flash/flash_data.txt")
   ) u_flash (
       .SCLK (clk),

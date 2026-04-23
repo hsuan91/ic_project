@@ -50,10 +50,10 @@ logic flush_EXWB_;
 logic flush_EXWB_r;
 logic write_regf_en_rr;
 logic [4:0]addr_rd_rr;
-logic sel_alu_rs1,sel_alu_rs2;
-logic sel_alu_rs1_r,sel_alu_rs2_r;
+logic sel_rs1_value_r_,sel_rs2_value_r_;
+logic sel_rs1_value_r_r,sel_rs2_value_r_r;
 logic sel_B_type_,sel_B_type_r;
-logic [31:0]alu_rs1_,alu_rs2_;
+logic [31:0]rs1_value_r_,rs2_value_r_;
 logic [31:0]alu_rs2_r;
 logic [1:0]set_rd_value_rr;
 logic write_ram_rr;
@@ -157,6 +157,10 @@ Reg_file u_Reg_file(
 	.regs_31(regs_31)
 );
 
+assign rs1_value_ 		= sel_rs1_value_ ? rd_value_ : rs1_value;
+assign rs2_value_ 		= sel_rs2_value_ ? rd_value_ : rs2_value;
+
+
 // CONTROLLER
 
 typedef enum {S0,S1,S2,S3} FSM_STATE;
@@ -168,8 +172,6 @@ always_ff @(posedge clk) begin
 	else
 		ps <= #1 ns;
 end
-		
-		//	combination
 
 always_comb
 begin
@@ -418,8 +420,8 @@ begin
 		sel_rd_value_r		<= 0;
 		sel_B_type_r      <= 0;
 		flush_EXWB_r      <= 0;
-		sel_alu_rs1_r     <= 0;
-		sel_alu_rs2_r     <= 0;
+		sel_rs1_value_r_r     <= 0;
+		sel_rs2_value_r_r     <= 0;
 	end
 	else
 	begin
@@ -441,8 +443,8 @@ begin
 		sel_rd_value_r		<= sel_rd_value_;
 		sel_B_type_r      <= sel_B_type_;
 		flush_EXWB_r      <= flush_EXWB_;
-		sel_alu_rs1_r     <= sel_alu_rs1;
-		sel_alu_rs2_r     <= sel_alu_rs2;
+		sel_rs1_value_r_r     <= sel_rs1_value_r_;
+		sel_rs2_value_r_r     <= sel_rs2_value_r_;
 	end
 end
 
@@ -450,7 +452,7 @@ end
 
 always_comb begin
 	unique case(sel_alu_a_r)
-		0:	alu_a_	= alu_rs1_;
+		0:	alu_a_	= rs1_value_r_;
 		1:	alu_a_	= pc_rr;
 	endcase
 end
@@ -458,7 +460,7 @@ end
 always_comb begin
 	unique case(sel_alu_b_r)
 		0:	alu_b_	= imm_r;
-		1:	alu_b_	= alu_rs2_;
+		1:	alu_b_	= rs2_value_r_;
 		2:	alu_b_	= 32'd4;
 	endcase
 end
@@ -498,10 +500,10 @@ LSU LSU_1(
 // mul
 always_comb begin
 	unique case (funct3_r)
-		`F_MUL:		product = $signed(alu_rs1_) * $signed(alu_rs2_);
-		`F_MULH:		product = $signed(alu_rs1_) * $signed(alu_rs2_);
-		`F_MULHSU:	product = $signed($signed(alu_rs1_) * alu_rs2_);
-		`F_MULHU:	product = alu_rs1_ * alu_rs2_;
+		`F_MUL:		product = $signed(rs1_value_r_) * $signed(rs2_value_r_);
+		`F_MULH:		product = $signed(rs1_value_r_) * $signed(rs2_value_r_);
+		`F_MULHSU:	product = $signed($signed(rs1_value_r_) * rs2_value_r_);
+		`F_MULHU:	product = rs1_value_r_ * rs2_value_r_;
 	endcase
 end
 assign mul_out 	= (funct3_r == `F_MUL) ? product[31:0] : product[63:32];
@@ -509,10 +511,10 @@ assign mul_out 	= (funct3_r == `F_MUL) ? product[31:0] : product[63:32];
 // div
 always_comb begin
 	unique case (funct3_r)
-		`F_DIV:		div_out = $signed(alu_rs1_) / $signed(alu_rs2_);
-		`F_DIVU:		div_out = alu_rs1_ / alu_rs2_;
-		`F_REM:		div_out = $signed(alu_rs1_) % $signed(alu_rs2_);
-		`F_REMU:		div_out = alu_rs1_ % alu_rs2_;
+		`F_DIV:		div_out = $signed(rs1_value_r_) / $signed(rs2_value_r_);
+		`F_DIVU:		div_out = rs1_value_r_ / rs2_value_r_;
+		`F_REM:		div_out = $signed(rs1_value_r_) % $signed(rs2_value_r_);
+		`F_REMU:		div_out = rs1_value_r_ % rs2_value_r_;
 	endcase
 end
 	
@@ -525,69 +527,68 @@ always_comb begin
 	endcase
 end
 
-// ALU右邊的+ 
-assign base_addr_ 	= sel_jump_r ? pc_rr : rs1_value_r;
+//compute jump address
+assign base_addr_ 	= sel_jump_r ? pc_rr : rs1_value_r_;
 assign j_addr_			= base_addr_ + imm_r;
 assign jump_addr_ 	= {j_addr_[31:1], (j_addr_[0] & sel_jump_r)};
 
 //forwarding unit (4->2)
 assign sel_rs1_value_ 	= write_regf_en_rr & (addr_rd_rr == addr_rs1_);
 assign sel_rs2_value_ 	= write_regf_en_rr & (addr_rd_rr == addr_rs2_);
-assign rs1_value_ 		= sel_rs1_value_ ? rd_value_ : rs1_value;
-assign rs2_value_ 		= sel_rs2_value_ ? rd_value_ : rs2_value;
 
 //forwarding unit (4->3)
-assign sel_alu_rs1      = (addr_rd_r == addr_rs1_);
-assign sel_alu_rs2      = (addr_rd_r == addr_rs2_);
+assign sel_rs1_value_r_      = write_regf_en_r & (addr_rd_r == addr_rs1_);
+assign sel_rs2_value_r_      = write_regf_en_r & (addr_rd_r == addr_rs2_);
+
+
 
 // stage 3的左邊三個組合邏輯
-logic alu_rs1_operation_alu_rs2_or_not;
+logic B_cmp;
 
 always_comb begin
 	unique case(funct3_r)
-		`F_BEQ : alu_rs1_operation_alu_rs2_or_not = (alu_rs1_ == alu_rs2_)?1:0;
-		`F_BNE :	alu_rs1_operation_alu_rs2_or_not = (alu_rs1_ != alu_rs2_)?1:0;
-		`F_BLT :	alu_rs1_operation_alu_rs2_or_not = ($signed(alu_rs1_) < $signed(alu_rs2_))?1:0;
-		`F_BGE :	alu_rs1_operation_alu_rs2_or_not = ($signed(alu_rs1_) >= $signed(alu_rs2_))?1:0;
-		`F_BLTU:	alu_rs1_operation_alu_rs2_or_not = (alu_rs1_ < alu_rs2_)?1:0;
-		`F_BGEU: alu_rs1_operation_alu_rs2_or_not = (alu_rs1_ >= alu_rs2_)?1:0;
+		`F_BEQ : B_cmp = (rs1_value_r_ == rs2_value_r_)?1:0;
+		`F_BNE : B_cmp = (rs1_value_r_ != rs2_value_r_)?1:0;
+		`F_BLT : B_cmp = ($signed(rs1_value_r_) < $signed(rs2_value_r_))?1:0;
+		`F_BGE : B_cmp = ($signed(rs1_value_r_) >= $signed(rs2_value_r_))?1:0;
+		`F_BLTU: B_cmp = (rs1_value_r_ < rs2_value_r_)?1:0;
+		`F_BGEU: B_cmp = (rs1_value_r_ >= rs2_value_r_)?1:0;
 	endcase	
 end
-//assign alu_rs1_operation_alu_rs2_or_not = (alu_rs1_ == alu_rs2_)?1:0;
 
 always_comb begin
 	case(sel_B_type_r)
 		0: flush_IFID_r_  = flush_IFID_r;
-		1: flush_IFID_r_  = alu_rs1_operation_alu_rs2_or_not;	
+		1: flush_IFID_r_  = B_cmp;	
 	endcase
 end
 
 always_comb begin
 	case(sel_B_type_r)
 		0: flush_IDEX_r_  = flush_IDEX_r;
-		1: flush_IDEX_r_  = alu_rs1_operation_alu_rs2_or_not;	
+		1: flush_IDEX_r_  = B_cmp;	
 	endcase
 end
 
 always_comb begin
 	case(sel_B_type_r)
 		0: sel_pc_r_ 		= sel_pc_r;
-		1: sel_pc_r_ 		= alu_rs1_operation_alu_rs2_or_not;	
+		1: sel_pc_r_ 		= B_cmp;	
 	endcase
 end
 
-// stage 3的中間兩顆
+//4 -> 3 forwarding value
 always_comb begin
-	case(sel_alu_rs1_r)
-		0: alu_rs1_      = rs1_value_r;
-		1: alu_rs1_      = rd_value_;
+	case(sel_rs1_value_r_r)
+		0: rs1_value_r_      = rs1_value_r;
+		1: rs1_value_r_      = rd_value_;
 	endcase
 end
 
 always_comb begin
-	case(sel_alu_rs2_r)
-		0: alu_rs2_      = rs2_value_r;
-		1: alu_rs2_      = rd_value_;
+	case(sel_rs2_value_r_r)
+		0: rs2_value_r_      = rs2_value_r;
+		1: rs2_value_r_      = rd_value_;
 	endcase
 end
 
@@ -608,7 +609,7 @@ always_ff @(posedge clk) begin
 	else begin
 		write_regf_en_rr      <= write_regf_en_r;
 		addr_rd_rr            <= addr_rd_r;
-		alu_rs2_r             <= alu_rs2_;
+		alu_rs2_r             <= rs2_value_r_;
 		write_ram_rr          <= write_ram_r;
 		funct3_rr             <= funct3_r;
 		ram_addr_r            <= ram_addr;
