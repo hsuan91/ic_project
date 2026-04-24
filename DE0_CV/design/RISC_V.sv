@@ -537,8 +537,8 @@ assign sel_rs1_value_ 	= write_regf_en_rr & (addr_rd_rr != 5'b0) & (addr_rd_rr =
 assign sel_rs2_value_ 	= write_regf_en_rr & (addr_rd_rr != 5'b0) & (addr_rd_rr == addr_rs2_);
 
 //forwarding unit (4->3)
-assign sel_rs1_value_r_      = write_regf_en_r & (addr_rd_rr != 5'b0) & (addr_rd_r == addr_rs1_);
-assign sel_rs2_value_r_      = write_regf_en_r & (addr_rd_rr != 5'b0) & (addr_rd_r == addr_rs2_);
+assign sel_rs1_value_r_      = write_regf_en_r & (addr_rd_r != 5'b0) & (addr_rd_r == addr_rs1_);
+assign sel_rs2_value_r_      = write_regf_en_r & (addr_rd_r != 5'b0) & (addr_rd_r == addr_rs2_);
 
 
 
