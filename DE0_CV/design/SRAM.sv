@@ -14,11 +14,10 @@ module SRAM (
 
     // 當 sram_we 為 0 時，將 bootloader 傳來的資料寫入記憶體
     always_ff @(posedge clk) begin
-        if (sram_we == 1'b0) begin
+        if (sram_we == 1'b0)
             mem[sram_addr[9:2]] <= sram_data;
-        end
+        else
+			sram_data_out = mem[sram_addr[9:2]];
     end
-
-    assign sram_data_out = mem[sram_addr[9:2]];
  
 endmodule

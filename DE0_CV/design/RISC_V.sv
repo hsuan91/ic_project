@@ -13,7 +13,7 @@ module RISC_V(
 
 logic [63:0] product;
 			 
-logic [31:0] pc, pc_r, pc_rr, pc_next_;
+logic [31:0] pc, pc_r, pc_rr, pc_rrr, pc_next_;
 logic [31:0] inst_, inst_r;
 logic [31:0] rd_value_, rs1_value, rs1_value_, rs1_value_r;
 logic [31:0] rs2_value, rs2_value_, rs2_value_r;
@@ -47,6 +47,7 @@ logic sel_rs1_value_, sel_rs2_value_;
 logic sel_pc_r_;
 logic flush_IDEX_r_;
 logic flush_IFID_r_;
+logic flush_IFID_r_r;
 logic flush_EXWB_;
 logic flush_EXWB_r;
 logic write_regf_en_rr;
@@ -100,19 +101,29 @@ SRAM u_SRAM(
 	.sram_data_out(inst_)
 );
 
-// IF/IDSS
+// PC_FF
 
 always_ff @(posedge clk)
 begin
-	if(rst | flush_IFID_r_)
+	if(rst)
+		pc_r <= 0;
+	else
+		pc_r <= pc;
+end
+
+// IF/ID
+
+always_ff @(posedge clk)
+begin
+	if(rst | flush_IFID_r_ | flush_IFID_r_r)
 	begin
 		inst_r 	<= `I_NOP;
-		pc_r 		<= 0;
+		pc_rr 		<= 0;
 	end
 	else 
 	begin
 		inst_r 	<= inst_;
-		pc_r 		<= pc;
+		pc_rr 		<= pc_r;
 	end
 end
 
@@ -416,7 +427,7 @@ begin
 		flush_IDEX_r		<= 0;
 		flush_IFID_r		<= 0;
 		sel_pc_r				<= 0;
-		pc_rr					<= 0;
+		pc_rrr					<= 0;
 		sel_jump_r			<= 0;
 		funct3_r				<= 0;
 		write_ram_r			<= 0;
@@ -439,7 +450,7 @@ begin
 		flush_IDEX_r		<= flush_IDEX_;
 		flush_IFID_r		<= flush_IFID_;
 		sel_pc_r				<= sel_pc_;
-		pc_rr					<= pc_r;
+		pc_rrr					<= pc_rr;
 		sel_jump_r			<= sel_jump_;
 		funct3_r				<= funct3_;
 		write_ram_r			<= write_ram_;
@@ -451,12 +462,18 @@ begin
 	end
 end
 
+// flush_IFID_r_  ff
+
+always_ff @(posedge clk) begin
+	flush_IFID_r_r <= flush_IFID_r_;
+end
+
 // ALU
 
 always_comb begin
 	unique case(sel_alu_a_r)
 		0:	alu_a_	= rs1_value_r_;
-		1:	alu_a_	= pc_rr;
+		1:	alu_a_	= pc_rrr;
 	endcase
 end
 
@@ -531,7 +548,7 @@ always_comb begin
 end
 
 //compute jump address
-assign base_addr_ 	= sel_jump_r ? pc_rr : rs1_value_r_;
+assign base_addr_ 	= sel_jump_r ? pc_rrr : rs1_value_r_;
 assign j_addr_			= base_addr_ + imm_r;
 assign jump_addr_ 	= {j_addr_[31:1], (j_addr_[0] & sel_jump_r)};
 
