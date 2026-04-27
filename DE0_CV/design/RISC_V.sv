@@ -22,6 +22,7 @@ logic [31:0] alu_a_, alu_b_, alu_out;
 logic [31:0] mul_out, div_out;
 logic [31:0] read_data;
 logic [31:0] j_addr_, base_addr_, jump_addr_;
+logic [31:0] sram_addr_;
  
 logic [6:0] opcode_, funct7_;
 
@@ -87,11 +88,13 @@ always_ff @(posedge clk)
 		
 // SRAM
 
+assign sram_addr_ = rst ? sram_addr : pc;
+
 SRAM u_SRAM(
 	.clk(clk),
 
 	.sram_we(sram_we),
-	.sram_addr (rst ? sram_addr : pc),
+	.sram_addr (sram_addr_),
 	.sram_data(sram_data),
 
 	.sram_data_out(inst_)
