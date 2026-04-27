@@ -85,16 +85,16 @@ always_ff @(posedge clk)
 	else
 		pc <= pc_next_;
 		
-// Program_Rom
+// SRAM
 
-Program_Rom u_Program_Rom(
+SRAM u_SRAM(
 	.clk(clk),
 
 	.sram_we(sram_we),
 	.sram_addr (rst ? sram_addr : pc),
 	.sram_data(sram_data),
 
-	.Rom_data(inst_)
+	.sram_data_out(inst_)
 );
 
 // IF/IDSS

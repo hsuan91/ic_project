@@ -1,4 +1,4 @@
-module Program_Rom (
+module SRAM (
     input  logic    clk,
 
     // Bootloader
@@ -6,8 +6,8 @@ module Program_Rom (
     input  logic [31:0] sram_addr,
     input  logic [31:0] sram_data,
 
-    // Program Rom output
-    output logic [31:0] Rom_data
+    // SRAM output
+    output logic [31:0] sram_data_out
 );
 
     logic [31:0] mem [0:255];   //1KB
@@ -19,6 +19,6 @@ module Program_Rom (
         end
     end
 
-    assign Rom_data = mem[sram_addr[9:2]];
+    assign sram_data_out = mem[sram_addr[9:2]];
  
 endmodule
