@@ -7,7 +7,7 @@ module RISC_V(
 	input  logic sram_we,
 	input  logic [31:0] sram_addr,
    input  logic [31:0] sram_data,
-
+	
 	output logic [31:0] regs_31
 );
 
@@ -67,18 +67,26 @@ logic [31:0]mul_out_r;
 logic [31:0]div_out_r;
 logic [1:0]sel_rd_value_rr;
 
+// hazard detection unit
+logic sel_L_type_,sel_L_type_r;
+logic load_use_hazard;
+logic pc_en;
+logic IFID_write_;
+logic flush_IDEX_hazard;
+logic sram_en;
 
 
 // B-type flag
 logic BEQ_FLAG, BNE_FLAG, BLT_FLAG, BGE_FLAG, BLTU_FLAG, BGEU_FLAG;
 
 // PC
-
 always_comb begin
-	unique case (sel_pc_r_)
-		0: pc_next_ = pc + 4;
-		1: pc_next_ = jump_addr_;
-	endcase
+	if(pc_en && !sel_pc_r_) 
+		pc_next_ = pc + 4;
+	else if(pc_en && sel_pc_r_)
+		pc_next_ = jump_addr_;
+	else
+		pc_next_ = pc;
 end
 
 always_ff @(posedge clk)
@@ -88,7 +96,6 @@ always_ff @(posedge clk)
 		pc <= pc_next_;
 		
 // SRAM
-
 assign sram_addr_ = rst ? sram_addr : pc;
 
 SRAM u_SRAM(
@@ -97,7 +104,8 @@ SRAM u_SRAM(
 	.sram_we(sram_we),
 	.sram_addr (sram_addr_),
 	.sram_data(sram_data),
-
+	.sram_en(sram_en),
+	
 	.sram_data_out(inst_)
 );
 
@@ -107,7 +115,7 @@ always_ff @(posedge clk)
 begin
 	if(rst)
 		pc_r <= 0;
-	else
+	else if(pc_en)
 		pc_r <= pc;
 end
 
@@ -118,12 +126,17 @@ begin
 	if(rst | flush_IFID_r_ | flush_IFID_r_r)
 	begin
 		inst_r 	<= `I_NOP;
-		pc_rr 		<= 0;
+		pc_rr 	<= 0;
+	end
+	else if(IFID_write_)
+	begin
+		inst_r 	<= inst_;
+		pc_rr 	<= pc_r;
 	end
 	else 
 	begin
-		inst_r 	<= inst_;
-		pc_rr 		<= pc_r;
+		inst_r 	<= inst_r;
+		pc_rr 	<= pc_rr;
 	end
 end
 
@@ -174,6 +187,19 @@ Reg_file u_Reg_file(
 assign rs1_value_ 		= sel_rs1_value_ ? rd_value_ : rs1_value;
 assign rs2_value_ 		= sel_rs2_value_ ? rd_value_ : rs2_value;
 
+// hazard detection unit
+
+assign load_use_hazard = 
+    (sel_L_type_r) &&
+    (addr_rd_r != 5'b0) &&
+    ((addr_rd_r == addr_rs1_ || addr_rd_r == addr_rs2_));
+
+assign IFID_write_ 			= !load_use_hazard;
+assign pc_en 					= !load_use_hazard;
+assign flush_IDEX_hazard 	= load_use_hazard;
+assign sram_en					= !load_use_hazard;
+
+
 
 // CONTROLLER
 
@@ -202,6 +228,7 @@ begin
 	write_regf_en_		= 0;
 	write_ram_			= 0;	// = write_read_
 	sel_B_type_       = 0;
+	sel_L_type_			= 0;
 	flush_EXWB_       = 0;
 	ns					= ps;
 	unique case(ps)
@@ -377,6 +404,7 @@ begin
 					end
 					`Opcode_L:
 					begin
+						sel_L_type_			= 1;
 						sel_rd_value_		= 1;
 						write_regf_en_		= 1;
 						unique case(funct3_)
@@ -414,7 +442,7 @@ assign BGEU_FLAG 		= (rs1_value_ >= rs2_value_);
 
 always_ff @(posedge clk)
 begin
-	if(rst | flush_IDEX_r_)
+	if(rst | flush_IDEX_r_ | flush_IDEX_hazard)
 	begin
 		rs1_value_r 		<= 0;
 		rs2_value_r 		<= 0;
@@ -433,6 +461,7 @@ begin
 		write_ram_r			<= 0;
 		sel_rd_value_r		<= 0;
 		sel_B_type_r      <= 0;
+		sel_L_type_r      <= 0;
 		flush_EXWB_r      <= 0;
 		sel_rs1_value_r_r     <= 0;
 		sel_rs2_value_r_r     <= 0;
@@ -456,6 +485,7 @@ begin
 		write_ram_r			<= write_ram_;
 		sel_rd_value_r		<= sel_rd_value_;
 		sel_B_type_r      <= sel_B_type_;
+		sel_L_type_r      <= sel_L_type_;
 		flush_EXWB_r      <= flush_EXWB_;
 		sel_rs1_value_r_r     <= sel_rs1_value_r_;
 		sel_rs2_value_r_r     <= sel_rs2_value_r_;
@@ -629,7 +659,7 @@ always_ff @(posedge clk) begin
 	else begin
 		write_regf_en_rr      <= write_regf_en_r;
 		addr_rd_rr            <= addr_rd_r;
-		rs2_value_r_r             <= rs2_value_r_;
+		rs2_value_r_r         <= rs2_value_r_;
 		write_ram_rr          <= write_ram_r;
 		funct3_rr             <= funct3_r;
 		ram_addr_r            <= ram_addr;
